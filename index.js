@@ -2,7 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var MongoClient = require('mongodb').MongoClient;
-var config = require('./config')
+var config = require('./config');
+var usercontroller = require('./usercontroller');
+var dbconnect = require('./dbconnection');
 
 var app = express();
 
@@ -10,21 +12,19 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-
-MongoClient.connect(config.dburi, function(err, db) {
-
-	if(err)
+dbconnect.connectToServer(function(err)
 	{
-		console.log(err);
-	}
-	else
-	{
-		console.log("connected to database");
-	}
-  db.close();
-});
+		if(err)
+		{
+			console.log(err);
+		}
+		else{
+			console.log("jiddd");
+		}
+	});
 
 
+app.use('/user', usercontroller);
 
 app.listen(config.port,function(err)
 {
@@ -35,3 +35,5 @@ app.listen(config.port,function(err)
 		console.log("listening on port 3000 ok");
 	}
 });
+
+
