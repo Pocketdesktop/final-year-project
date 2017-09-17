@@ -1,7 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
-var mongoose = require('mongoose')
+var MongoClient = require('mongodb').MongoClient;
+var config = require('./config')
 
 var app = express();
 
@@ -9,13 +10,23 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-mongoose.connect("mongodb://127.0.0.1:27017/mydb")
-mongoose.connection.once("connected",function()
-{
-	console.log("database connected successfully");
-})
 
-app.listen(3000,function(err)
+MongoClient.connect(config.dburi, function(err, db) {
+
+	if(err)
+	{
+		console.log(err);
+	}
+	else
+	{
+		console.log("connected to database");
+	}
+  db.close();
+});
+
+
+
+app.listen(config.port,function(err)
 {
 	if(err){
 		console.log(err);
