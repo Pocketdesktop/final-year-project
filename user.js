@@ -22,4 +22,29 @@ module.exports = {
 
 
 
+
+};
+
+
+module.exports = {
+		getuser: function(username,callback){
+		var db = dbconnection.getDb();
+	console.log(username);
+	var cursor  = db.collection('users').find({"username":username});
+
+return cursor;
+/*
+	cursor.forEach(function(doc){
+		console.log(doc);
+	})
+*/
+
+     
+
+	//console.log(b);
+
+
+}
+
+
 };

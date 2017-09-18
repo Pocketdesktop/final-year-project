@@ -24,6 +24,9 @@ dbconnect.connectToServer(function(err)
 	});
 
 
+
+
+
 app.use('/user', usercontroller);
 
 app.listen(config.port,function(err)
