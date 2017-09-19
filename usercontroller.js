@@ -1,9 +1,11 @@
-
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var user = require('./user');
+
+
 router.use(bodyParser.urlencoded({ extended: true }));
+
 
 router.post('/register', function (req, res) {
   // console.log(req.body);
@@ -14,29 +16,25 @@ router.post('/register', function (req, res) {
             else
                 console.log("hurray");
         });
-
-
-
     });
 
 
 router.post('/login', function (req, res) {
   // console.log(req.body);
-   var userdata = user.getuser(req.body.username,function(err)
+   var userdata = user.getuser(req.body.username,function(response)
         {
-            if(err)
-                console.log(err);
-            else
-                console.log("hurray");
+                console.log(response);
+                console.log(response[0].password);
+                if(req.body.username === response[0].password)
+                {
+                    console.log("password is correct");
+                }
+                else
+                {
+                    console.log("password is incorrect");
+                }
         });
-   console.log("userdata here");
-   console.log(userdata.toArray());
-   console.log("aage ka kaam");
-
-
-
     });
-
 
 
 module.exports = router;
