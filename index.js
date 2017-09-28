@@ -26,6 +26,9 @@ dbconnect.connectToServer(function(err) {
 });
 
 
+  //res.status(404).send({url: req.originalUrl + ' not found'}) use this kind of line to send response to the client. 
+
+
 app.use('/user', usercontroller);
 
 
