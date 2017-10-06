@@ -88,7 +88,13 @@ router.post('/hello',isauthenticated, function (req, res) {
    console.log("token verified and all");
    res.json({"username":decoded.username});
     });
-
+router.get('/hello',isauthenticated, function (req, res) {
+  // console.log(req.body);
+   var token = req.headers.authorization.replace('bearer ', '');
+  var decoded = jwt.decode(token);
+   console.log("token verified and all");
+   res.json({"username":decoded.username});
+    });
 
 
 
