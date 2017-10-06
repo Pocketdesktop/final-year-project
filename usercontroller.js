@@ -20,7 +20,7 @@ function isauthenticated(req, res, next)
         if(err)
         {
             console.log("error "+err);
-            res.send("there is some error with the token so you are not authorized");
+            res.json({"token autherization":"the token sent by you is not valid"});
         }
         else
         {
@@ -31,7 +31,7 @@ function isauthenticated(req, res, next)
     }
     else
     {
-        res.send("you are not authorized because token is not provided");
+        res.json({"token authorization":"token is not provided"});
     }
     console.log('Something is happening.test here and do your stuff here');
     //console.log(req.headers.authorization);
@@ -86,7 +86,7 @@ router.post('/hello',isauthenticated, function (req, res) {
    var token = req.headers.authorization.replace('bearer ', '');
   var decoded = jwt.decode(token);
    console.log("token verified and all");
-   res.send("your token is verified"+decoded.username);
+   res.json({"username":decoded.username});
     });
 
 
