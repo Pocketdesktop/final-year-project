@@ -19,6 +19,8 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "express-sanitizer": "^1.0.2",
+    "express-validation": "^1.0.2",
     "jsonwebtoken": "^7.4.3",
     "mongoose": "^4.11.10",
     "morgan": "^1.8.2"

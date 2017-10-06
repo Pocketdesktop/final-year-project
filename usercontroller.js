@@ -7,7 +7,7 @@ var config = require('./config');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
-
+// call this function where ever token verification is needed.
 //router.use(function(req, res, next) 
 function isauthenticated(req, res, next)
 {
