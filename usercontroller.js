@@ -69,7 +69,7 @@ router.post('/login', function (req, res) {
                     jwt.sign({ username: response[0].username },config.secretkey, { algorithm: 'HS256' } , function(err, token) {
                     console.log(token);
                     console.log(err);
-                    res.send(token);
+                    res.json({"token": token});
                     });
    
                 }
