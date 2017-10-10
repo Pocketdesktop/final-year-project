@@ -3,8 +3,8 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var MongoClient = require('mongodb').MongoClient;
 var config = require('./config');
-var usercontroller = require('./usercontroller');
-var dbconnect = require('./dbconnection');
+var userController = require('./userController');
+var dbConnect = require('./dbConnection');
 var app = express();
 
 
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 
-dbconnect.connectToServer(function(err) {
+dbConnect.connectToServer(function(err) {
     if (err) {
         console.log(err);
     } else {
@@ -47,7 +47,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/user', usercontroller);
+app.use('/user', userController);
 
 
 app.listen(config.port, function(err) {
