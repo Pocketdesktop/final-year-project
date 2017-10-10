@@ -2,7 +2,10 @@ var MongoClient = require('mongodb').MongoClient;
 var config = require('./config');
 var _db;
 
+
 module.exports = {
+    
+
     connectToServer: function(callback) {
         MongoClient.connect(config.dbUri, function(err, db) {
             _db = db;
@@ -12,9 +15,11 @@ module.exports = {
         });
     },
 
+
     getDb: function() {
         return _db;
     }
+
 
 };
 

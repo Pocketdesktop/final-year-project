@@ -3,8 +3,8 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var MongoClient = require('mongodb').MongoClient;
 var config = require('./config');
-var userController = require('./userController');
-var dbConnect = require('./dbConnection');
+var userController = require('./usercontroller');
+var dbConnect = require('./dbconnection');
 var app = express();
 
 
