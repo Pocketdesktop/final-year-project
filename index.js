@@ -4,6 +4,7 @@ var morgan = require('morgan');
 var MongoClient = require('mongodb').MongoClient;
 var config = require('./config');
 var userController = require('./usercontroller');
+var feedscontroller = require('./feedscontroller');
 var dbConnect = require('./dbconnection');
 var app = express();
 
@@ -48,7 +49,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/user', userController);
-
+app.use('/query', feedscontroller);
 
 app.listen(config.port, function(err) {
     if (err) {
