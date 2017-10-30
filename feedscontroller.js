@@ -40,8 +40,7 @@ router.get('/getallpost',authentication.isAuthenticated, function(req,res){
 
 router.post('/deletequery',authentication.isAuthenticated,function(req,res){
     console.log(req.body);
-    var token = req.headers.authorization.replace('bearer ', '');
-    var decoded = jwt.decode(token);
+    var decoded = getToken(req);
     
     feeds.deleteQuery(req.body,decoded,function(err,result){
         if(err)
@@ -58,12 +57,25 @@ router.post('/deletequery',authentication.isAuthenticated,function(req,res){
 
 });
 
+router.post('/addanswer',authentication.isAuthenticated,function(req,res){
+    console.log(req.body);
+    var decoded = getToken(req);
+    feeds.addAnswer(req.body,function(err,result)
+    {
+        if(err)
+        {
+            res.json({"add answer error":"unable to add answer at this moment"});
+        }
+        else{
+            res.json({"add answer":"answer added successfully"});
+        }
+    });
+});
+
 
 router.post('/deleteanswer',authentication.isAuthenticated,function(req,res){
     console.log(req.body);
-    var token = req.headers.authorization.replace('bearer ', '');
-    var decoded = jwt.decode(token);
-    
+    var decoded = getToken(req);
     feeds.deleteAnswer(req.body,function(err,result){
         if(err)
         {
@@ -79,6 +91,11 @@ router.post('/deleteanswer',authentication.isAuthenticated,function(req,res){
 });
 
 
+function getToken(data)
+{
+    var temp = data.headers.authorization.replace('bearer ', '');
+    return jwt.decode(temp);
+}
 
 
 module.exports = router;

@@ -64,6 +64,40 @@ module.exports = {
     },
 
 
+    addAnswer(data,callback)
+    {
+    	var db = dbConnection.getDb();
+    	var query = {_id:ObjectId(data.id)};
+    	console.log(query);
+    	db.collection('feeds').findOne(query,function(err,result){
+    		if(err)
+    		{
+    			callback(err,result);
+    		}
+    		else{
+    			var test = Object.keys(result.answers).length;
+    			console.log(test+" length of answers");
+    			test=test+1;
+    			test="answers.answer_"+test;
+    			delete data["id"];
+    			var newAnswer = {};
+    			newAnswer[test] = data;
+    			console.log(newAnswer);
+    			var newvalues = { $set:{newAnswer}};
+  				db.collection("feeds").updateOne(query, newAnswer, function(err, res) {
+  					console.log(err+" error");
+  					console.log(result+" result");
+  				})
+
+    			callback(err,result);
+    		}
+    	})
+
+
+    	
+    },
+
+
     deleteAnswer(data,callback){
     	var db = dbConnection.getDb();
     	var query = {_id:"objectId('"+data.id+"')"};
