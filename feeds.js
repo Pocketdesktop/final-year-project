@@ -68,28 +68,26 @@ module.exports = {
     {
     	var db = dbConnection.getDb();
     	var query = {_id:ObjectId(data.id)};
-    	console.log(query);
+    	//console.log(query);
     	db.collection('feeds').findOne(query,function(err,result){
     		if(err)
     		{
     			callback(err,result);
     		}
     		else{
-    			var test = Object.keys(result.answers).length;
-    			console.log(test+" length of answers");
-    			test=test+1;
-    			test="answers.answer_"+test;
+    			result.answercount=parseInt(result.answercount,10)+1;
+                test="answer_"+result.answercount;
+                console.log(test);
     			delete data["id"];
-    			var newAnswer = {};
-    			newAnswer[test] = data;
-    			console.log(newAnswer);
-    			var newvalues = { $set:{newAnswer}};
-  				db.collection("feeds").updateOne(query, newAnswer, function(err, res) {
-  					console.log(err+" error");
-  					console.log(result+" result");
-  				})
-
+    			result.answers[test]=data;
+    			//console.log(result.answers);
+    			//console.log(result.answers);
+  				console.log(result);
+  				db.collection("feeds").updateOne(query, result, function(err, res) {
+  				//	console.log(err+"hdhdh");
+  				//	console.log(res);
     			callback(err,result);
+    			});
     		}
     	})
 
@@ -100,6 +98,25 @@ module.exports = {
 
     deleteAnswer(data,callback){
     	var db = dbConnection.getDb();
-    	var query = {_id:"objectId('"+data.id+"')"};
+    	var query = {_id:ObjectId(data.id)};
+    	console.log(query);
+    	delete data["id"];
+    	console.log(data);
+    	var answer={};
+    	answer[data.answer]="";
+    	var test = { $unset : answer };
+    	console.log(test);
+    	db.collection('feeds').update(query,test, function(err,res)
+    		{
+    			console.log(err+"dddd");
+    			//console.log(res);
+    			callback(err,res);
+    		});
+
+
+
+
+
+
     }    
     };
