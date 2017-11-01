@@ -56,6 +56,6 @@ app.listen(config.port, function(err) {
         console.log(err);
     } else {
         console.log("listening on port 3000 ok");
-        response.json({"send":"hello world"});
+        
     }
 });
