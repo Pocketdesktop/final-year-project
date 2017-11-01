@@ -29,7 +29,7 @@ dbConnect.connectToServer(function(err) {
 
   //res.status(404).send({url: req.originalUrl + ' not found'}) use this kind of line to send response to the client. 
 
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '14.139.233.50');
@@ -46,7 +46,7 @@ app.use(function (req, res, next) {
 
     // Pass to next layer of middleware
     next();
-});
+});*/
 
 app.use('/user', userController);
 app.use('/query', feedscontroller);
@@ -56,6 +56,6 @@ app.listen(config.port, function(err) {
         console.log(err);
     } else {
         console.log("listening on port 3000 ok");
-        
+
     }
 });
