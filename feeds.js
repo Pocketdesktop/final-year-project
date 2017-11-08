@@ -1,11 +1,23 @@
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectId;
 var dbConnection = require('./dbconnection');
+var utilities = require('./utilities');
 
 module.exports = {
 
-  addQuery(data, callback) {
+  addQuery(req, callback) {
         var db = dbConnection.getDb();
+        var data = req.body;
+        data["time"] = new Date(utilities.getDateTime());
+        data["status"] = "ok";
+        data["answers"] = {};
+        data["answercount"] = 0;
+        data["query_by"] = utilities.getToken(req).username;
+        data["replycount"] = 0;
+        data["reply"] = {};
+
+        console.log(data);
+		//process.exit();
                 db.collection('feeds').insertOne(data, function(err, response) {
                     if (err)
                         console.log(err);
@@ -64,27 +76,44 @@ module.exports = {
     },
 
 
-    addAnswer(data,callback)
+    addAnswer(req,callback)
     {
     	var db = dbConnection.getDb();
-    	var query = {_id:ObjectId(data.id)};
+    	var query = {_id:ObjectId(req.body.id)};
     	//console.log(query);
     	db.collection('feeds').findOne(query,function(err,result){
     		if(err)
     		{
+    			console.log(err);
     			callback(err,result);
     		}
     		else{
-    			result.answercount=parseInt(result.answercount,10)+1;
+    			var data = req.body;
+    			data["answer_by"] = utilities.getToken(req).username;
+    			data["answer_time"] = new Date(utilities.getDateTime());
+    			data["upvotes"] = 0;
+    			data["answer_status"] = "ok";
+    			data["reply_count"] = 0;
+    			data["reply"] = {};
+    			//console.log(data);
+    			//process.exit();
+
+    			result.answercount=result.answercount+1;
                 test="answer_"+result.answercount;
                 console.log(test);
     			delete data["id"];
+    			if(result.answercount==0)
+    			{
+    				result["answers"]={};
+    			}
+    			
     			result.answers[test]=data;
     			//console.log(result.answers);
     			//console.log(result.answers);
   				console.log(result);
+  				//process.exit();
   				db.collection("feeds").updateOne(query, result, function(err, res) {
-  				//	console.log(err+"hdhdh");
+  					console.log(err+"hdhdh");
   				//	console.log(res);
     			callback(err,result);
     			});
@@ -103,9 +132,11 @@ module.exports = {
     	delete data["id"];
     	console.log(data);
     	var answer={};
-    	answer[data.answer]="";
+    	var temp = "answers."+data.answer;
+    	answer[temp]="";
     	var test = { $unset : answer };
     	console.log(test);
+    	process.exit();
     	db.collection('feeds').update(query,test, function(err,res)
     		{
     			console.log(err+"dddd");

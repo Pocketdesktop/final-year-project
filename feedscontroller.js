@@ -13,8 +13,9 @@ router.use(bodyParser.urlencoded({
 
 
 router.post('/addquery',authentication.isAuthenticated,function(req, res) {
-    console.log(req.body);
-    feeds.addQuery(req.body, function(err, result) {
+    //console.log(req.body);
+   // process.exit();
+    feeds.addQuery(req, function(err, result) {
         if (err) {
             console.log(err);
             res.json({
@@ -45,11 +46,11 @@ router.post('/deletequery',authentication.isAuthenticated,function(req,res){
     feeds.deleteQuery(req.body,decoded,function(err,result){
         if(err)
         {
-            res.json({"delete error":"unable to delete the query at this moment"});
+            res.json({"delete query error":"unable to delete the query at this moment"});
         }
         else
         {
-            res.json({"delete":"query deleted successfully"});
+            res.json({"delete query":"query deleted successfully"});
         }
     
     });
@@ -58,9 +59,9 @@ router.post('/deletequery',authentication.isAuthenticated,function(req,res){
 });
 
 router.post('/addanswer',authentication.isAuthenticated,function(req,res){
-    console.log(req.body);
+   // console.log(req.body);
     var decoded = getToken(req);
-    feeds.addAnswer(req.body,function(err,result)
+    feeds.addAnswer(req,function(err,result)
     {
         if(err)
         {
@@ -79,11 +80,11 @@ router.post('/deleteanswer',authentication.isAuthenticated,function(req,res){
     feeds.deleteAnswer(req.body,function(err,result){
         if(err)
         {
-            res.json({"delete error":"unable to delete the answer at this moment"});
+            res.json({"delete answer error":"unable to delete the answer at this moment"});
         }
         else
         {
-            res.json({"delete":"answer deleted successfully"});
+            res.json({"delete answer":"answer deleted successfully"});
         }
     
     });

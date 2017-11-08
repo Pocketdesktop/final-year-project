@@ -7,7 +7,7 @@ module.exports = {
 	"database":"",
 	"dbUsername":"agriconnectagnishardul",
 	"dbPassword":"finalyearproject",
-	"port":process.env.PORT || 3001,
+	"port":process.env.PORT || 3000,
 	"secretKey":"agriconnectsecret"
 }
 

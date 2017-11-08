@@ -4,7 +4,8 @@ var morgan = require('morgan');
 var MongoClient = require('mongodb').MongoClient;
 var config = require('./config');
 var userController = require('./usercontroller');
-var feedscontroller = require('./feedscontroller');
+var feedsController = require('./feedscontroller');
+var replyController = require('./replyController');
 var dbConnect = require('./dbconnection');
 var app = express();
 
@@ -49,13 +50,14 @@ dbConnect.connectToServer(function(err) {
 });*/
 
 app.use('/user', userController);
-app.use('/query', feedscontroller);
+app.use('/query', feedsController);
+app.use('/reply', replyController);
 
 app.listen(config.port, function(err) {
     if (err) {
         console.log(err);
     } else {
-        console.log("listening on port 3000 ok");
+        console.log("listening on port "+config.port);
 
     }
 });
