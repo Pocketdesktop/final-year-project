@@ -18,7 +18,7 @@
   },
   "homepage": "https://gitlab.com/finalYearProjectmmmutcse/final-year-project#README",
   "dependencies": {
-    
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "express-sanitizer": "^1.0.2",
