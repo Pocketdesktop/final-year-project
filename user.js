@@ -9,7 +9,7 @@ module.exports = {
     addUser(userData, callback) {
         var db = dbConnection.getDb();
         var plainPassword = userData.password;
-        bcrypt.hash(plainPassword, 10, function(err, hash) {
+        bcrypt.hash(plainPassword,10, function(err, hash) {
             if (err) {
                 console.log(err);
                 callback(err, hash);

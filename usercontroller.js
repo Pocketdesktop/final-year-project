@@ -24,9 +24,19 @@ router.post('/register', function(req, res) {
                 "register error": "registration unsuccessful"
             });
         } else {
-            res.json({
-                "register": "registration successful"
-            });
+
+             jwt.sign({
+                        username: req.body.username
+                    }, config.secretKey, {
+                        algorithm: 'HS256'
+                    }, function(err, token) {
+                        console.log(token);
+                        console.log(err);
+                        res.json({
+                            "token": token
+                        });
+                    });
+           
         }
     });
 });
