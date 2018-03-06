@@ -23,7 +23,8 @@ router.post('/queryreply', function(req, res) {
             });
         } else {
             res.json({
-                "query reply": "successful"
+                "query reply": "successful",
+                "result":result
             });
         }
     });
@@ -57,7 +58,8 @@ router.post('/asnwerreply', function(req, res) {
             });
         } else {
             res.json({
-                "answer reply": "successful"
+                "answer reply": "successful",
+                "result":result
             });
         }
     });

@@ -65,7 +65,8 @@ router.post('/addanswer',authentication.isAuthenticated,function(req,res){
     {
         if(err)
         {
-            res.json({"add answer error":"unable to add answer at this moment"});
+            res.json({"add answer error":"unable to add answer at this moment"
+                        "result":result});
         }
         else{
             res.json({"add answer":"answer added successfully"});
@@ -80,7 +81,8 @@ router.post('/deleteanswer',authentication.isAuthenticated,function(req,res){
     feeds.deleteAnswer(req.body,function(err,result){
         if(err)
         {
-            res.json({"delete answer error":"unable to delete the answer at this moment"});
+            res.json({"delete answer error":"unable to delete the answer at this moment",
+                        "result":result});
         }
         else
         {
