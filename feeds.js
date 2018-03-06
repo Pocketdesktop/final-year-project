@@ -125,6 +125,46 @@ module.exports = {
     },
 
 
+    addAnswerReply(req, callback) {
+        var data = req.body;
+        var db = dbConnection.getDb();
+        var query = {_id:ObjectId(data.id)};
+        //console.log(query);
+        db.collection('feeds').findOne(query,function(err,result){
+            if(err)
+            {
+                console.log(err);
+                callback(err,result);
+            }
+            else{
+                var answer_id = data.answer;
+                console.log(answer_id);
+                //console.log(data);
+                data["reply_time"] = new Date(utilities.getDateTime());
+                data["reply_by"] = utilities.getToken(req).username;
+                //console.log(data);
+                //process.exit();
+                //console.log(result);
+                result.answers[answer_id].reply_count=result.answers[answer_id].reply_count+1;
+                test="reply_"+result.answers[answer_id].reply_count;
+                console.log(test);
+                delete data["id"];
+                delete data["answer"];
+                result.answers[answer_id].reply[test]=data;
+                //console.log(result.answers);
+                //console.log(result.answers);
+                console.log(result);
+                //process.exit();
+                db.collection("feeds").updateOne(query, result, function(err, res) {
+                    console.log(err+"hdhdh");
+                //  console.log(res);
+                callback(err,result);
+                });
+            }
+        });
+    },
+
+
     deleteAnswer(data,callback){
     	var db = dbConnection.getDb();
     	var query = {_id:ObjectId(data.id)};
@@ -143,11 +183,6 @@ module.exports = {
     			//console.log(res);
     			callback(err,res);
     		});
-
-
-
-
-
 
     }    
     };
