@@ -36,7 +36,7 @@ module.exports = {
                 db.collection("feeds").updateOne(query, result, function(err, res) {
                     console.log(err+"hdhdh");
                 //  console.log(res);
-                callback(err,result);
+                callback(err,result.reply[test]);
                 });
             }
         });
