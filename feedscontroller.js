@@ -65,11 +65,12 @@ router.post('/addanswer',authentication.isAuthenticated,function(req,res){
     {
         if(err)
         {
-            res.json({"add answer error":"unable to add answer at this moment"
+            res.json({"add answer error":"unable to add answer at this moment",
                         "result":result});
         }
         else{
-            res.json({"add answer":"answer added successfully"});
+            res.json({"add answer":"answer added successfully",
+                    "result":result});
         }
     });
 });
