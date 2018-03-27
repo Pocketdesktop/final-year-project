@@ -1,0 +1,657 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"in",
+				"instance"
+			],
+			[
+				"sta",
+				"state"
+			],
+			[
+				"hobby_",
+				"hobby_obj"
+			],
+			[
+				"re",
+				"require"
+			],
+			[
+				"Au",
+				"authentication_classes"
+			],
+			[
+				"tra",
+				"Transactions"
+			],
+			[
+				"w",
+				"wallet"
+			],
+			[
+				"try",
+				"try\tTry/Except"
+			],
+			[
+				"wall",
+				"walletserializer"
+			],
+			[
+				"wa",
+				"wallet"
+			],
+			[
+				"aut",
+				"auth"
+			],
+			[
+				"per",
+				"permissions"
+			],
+			[
+				"de",
+				"default"
+			],
+			[
+				"No",
+				"None"
+			],
+			[
+				"Tr",
+				"True"
+			],
+			[
+				"all",
+				"all_offer"
+			],
+			[
+				"for",
+				"format"
+			],
+			[
+				"m",
+				"merchant"
+			],
+			[
+				"Categ",
+				"Categories"
+			],
+			[
+				"store",
+				"storeType"
+			],
+			[
+				"offer",
+				"offerType"
+			],
+			[
+				"cre",
+				"offerCreditRate"
+			],
+			[
+				"cou",
+				"couponCode"
+			],
+			[
+				"o",
+				"objects"
+			],
+			[
+				"Onl",
+				"OnlineMerchant"
+			],
+			[
+				"f",
+				"f_new"
+			],
+			[
+				"name",
+				"name_list"
+			],
+			[
+				"nam",
+				"name_list"
+			],
+			[
+				"st",
+				"style\tTag"
+			],
+			[
+				"b6",
+				"b64encode"
+			],
+			[
+				"pub",
+				"pubKeyObj"
+			],
+			[
+				"ti",
+				"timezone"
+			],
+			[
+				"e",
+				"entry"
+			],
+			[
+				"ex",
+				"expire"
+			],
+			[
+				"N",
+				"None"
+			],
+			[
+				"to",
+				"token"
+			],
+			[
+				"dev",
+				"device"
+			],
+			[
+				"use",
+				"user"
+			],
+			[
+				"user",
+				"users"
+			],
+			[
+				"device",
+				"device_id"
+			],
+			[
+				"se",
+				"send_sms"
+			],
+			[
+				"n",
+				"Number"
+			],
+			[
+				"cs",
+				"csrf_exempt"
+			],
+			[
+				"C",
+				"CharField"
+			],
+			[
+				"c",
+				"CharField"
+			],
+			[
+				"me",
+				"method"
+			],
+			[
+				"d",
+				"django"
+			],
+			[
+				"au",
+				"audio_download_list"
+			],
+			[
+				"vide",
+				"video_details"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "usercontroller.js",
+			"settings":
+			{
+				"buffer_size": 3319,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/h p/Desktop/saveIt/saveit-server/saveIt/settings.py",
+			"settings":
+			{
+				"buffer_size": 4810,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/h p/Desktop/saveIt/saveit-server/saveIt/urls.py",
+			"settings":
+			{
+				"buffer_size": 1438,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "user.js",
+			"settings":
+			{
+				"buffer_size": 2066,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "Package Control: i",
+		"selected_items":
+		[
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 461.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/F/final-year-project/final-year-project"
+	],
+	"file_history":
+	[
+		"/C/Users/h p/Downloads/trialscript.html",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/db.json",
+		"/C/Users/h p/Desktop/project/Logout/LOGAN/logan.pem",
+		"/G/padhai/code/projects/Logout/search_app/views.py",
+		"/G/padhai/code/projects/Logout/posts/views.py",
+		"/C/Users/h p/Downloads/Logout/posts/views.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/models.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/admin.py",
+		"/G/padhai/code/projects/Logout/posts/templates/posts/index.html",
+		"/C/Users/h p/Downloads/Logout/posts/models.py",
+		"/G/padhai/code/projects/Logout/searcht/views.py",
+		"/G/padhai/code/projects/Logout/LOGAN/settings.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/saveIt/settings.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/views.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/user/models.py",
+		"/C/Users/h p/Downloads/Logout/posts/templates/posts/index.html",
+		"/C/Users/h p/Downloads/search.py",
+		"/C/Users/h p/Downloads/Logout/posts/templates/index.html",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/middleware.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/api.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/urls.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/saveIt/urls.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/forms.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/user/urls.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/user/serializers.py",
+		"/C/Users/h p/Downloads/Logout/searcht/search.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/requirements.txt",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/user/views.py",
+		"/C/Users/h p/Downloads/Logout/searcht/views.py",
+		"/C/Users/h p/Downloads/Logout/posts/signals.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/serializers.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/Pipfile",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/app.json",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/Procfile.windows",
+		"/D/Geostorm (2017) [YTS.AG]/Geostorm.2017.720p.BluRay.x264-[YTS.AG].srt",
+		"/C/Users/h p/Downloads/index.html",
+		"/C/Users/h p/Desktop/saveIt/python-getting-started/Procfile",
+		"/C/Users/h p/Desktop/saveIt/python-getting-started/app.json",
+		"/C/Users/h p/Desktop/saveIt/python-getting-started/Pipfile",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/Procfile",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/saveIt/wsgi.py",
+		"/C/Users/h p/Desktop/saveIt/python-getting-started/.env",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/Pipfile.lock",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/manage.py",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/saveitindia.com/index.php",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/cms.saveitindia.com/view/Offers/addOffer.php",
+		"/home/kenway/Documents/saveit export/stores.json",
+		"/home/kenway/Desktop/categories.json",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/saveitindia.com/templates/category.php",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/saveitindia.com/category.php",
+		"/home/kenway/Documents/saveit export/offers.json",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/saveitindia.com/classes/Database.php",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/saveitindia.com/helper/functions.php",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/saveitindia.com/redirect.php",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/saveitindia.com/header.php",
+		"/home/kenway/Desktop/Robbotics Club Final/index.html",
+		"/home/kenway/Desktop/ec2-13-127-148-20.ap-south-1.compute.amazonaws.com.rdp",
+		"/home/kenway/a.txt",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/developer/facebook/includes/functions.php",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/saveitindia.com/classes/Auth.php",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/saveitindia.com/classes/FileManager.php",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/saveitindia.com/classes/MetaGenerator.php",
+		"/run/user/1000/gvfs/ftp:host=saveitservices.com/public_html/saveitindia.com/classes/Security.php",
+		"/media/kenway/New Volume/Series/Friends/s02/Friends - [2x15] - The One Where Ross and Rachel... You Know.srt",
+		"/media/kenway/New Volume/Series/HIMYM/Season 5/How I Met Your Mother S05E11 WEB-DL 1080p x265_Serial.AVADL.NeT.mkv.srt",
+		"/home/kenway/Desktop/cookies (1).txt",
+		"/home/kenway/MyHolidayNetwork/MyHolidayNetwork/settings.py",
+		"/home/kenway/newsapp_server/updater-script/multiThreadingFeedParserImageSize.py",
+		"/home/kenway/newsapp_server/updater-script/multiThreadinFeedParser.py",
+		"/home/kenway/home_automation_server/api/models.py",
+		"/home/kenway/games/gamelinks.py",
+		"/home/kenway/AndroidStudioProjects/Countries/app/src/main/java/com/shivendra/countries/Utils/RoomEntities.java",
+		"/home/kenway/AndroidStudioProjects/Countries/app/src/main/java/com/shivendra/countries/Activities/AdvancedSearch.java",
+		"/home/kenway/AndroidStudioProjects/Countries/app/src/main/java/com/shivendra/countries/Activities/QuizActivity.java",
+		"/home/kenway/MyHolidayNetwork/manage.py",
+		"/home/kenway/AndroidStudioProjects/Countries/app/src/main/java/com/shivendra/countries/RoomDatabase/Country.java",
+		"/home/kenway/Desktop/Tech News (1).txt",
+		"/home/kenway/Desktop/Tech News.txt",
+		"/home/kenway/Desktop/Lifestyle.txt",
+		"/home/kenway/data.txt",
+		"/home/kenway/Desktop/top2.json",
+		"/home/kenway/.cache/.fr-cvKRpA/views.py",
+		"/home/kenway/Documents/got-char/image.py",
+		"/home/kenway/Documents/got-char/so.py",
+		"/home/kenway/Documents/got-char/extractor.py",
+		"/home/kenway/MyHolidayNetwork/rl/views.py",
+		"/home/kenway/Desktop/foo.py",
+		"/home/kenway/cpclips-statics/pl.py",
+		"/home/kenway/Desktop/import os.py",
+		"/home/kenway/cpclips-statics/keygen.py",
+		"/home/kenway/cpclips-statics/youparse.py",
+		"/home/kenway/cpclips-statics/index.html",
+		"/home/kenway/Desktop/untitled.py",
+		"/home/kenway/cpclips_v2/media/1495899263.txt",
+		"/media/kenway/New Volume/offline_payments_server_version_2/offline_payments/settings.py",
+		"/home/kenway/offline_payments/offline_payments/settings.py",
+		"/home/kenway/Desktop/textlocal.py",
+		"/home/kenway/offline_payments/api/views.py",
+		"/home/kenway/offline_payments/api/admin.py",
+		"/home/kenway/offline_payments/api/urls.py",
+		"/home/kenway/tlp-indicator.py",
+		"/home/kenway/Desktop/rsa.py",
+		"/home/kenway/offline_payments/api/models.py",
+		"/home/kenway/offline_payments/offline_payments/wsgi.py",
+		"/home/kenway/offline_payments/offline_payments/urls.py",
+		"/home/kenway/Desktop/ydl.py",
+		"/media/kenway/New Volume/Shivendra/RetailBankingManagement/account_executive/models.py",
+		"/media/kenway/New Volume/Shivendra/alumni_web/rl/views.py",
+		"/media/kenway/New Volume/Shivendra/MyHolidayNetwork/rl/views.py",
+		"/media/kenway/New Volume/Shivendra/MyHolidayNetwork/MyHolidayNetwork/settings.py",
+		"/home/kenway/cpclips/downloader/models.py",
+		"/media/kenway/New Volume/Shivendra/RetailBankingManagement/RetailBankingManagement/urls.py",
+		"/home/kenway/cpclips_new/downloader/views.py"
+	],
+	"find":
+	{
+		"height": 30.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "F:\\final-year-project\\final-year-project"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "usercontroller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3319,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								709,
+								709
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 292.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/h p/Desktop/saveIt/saveit-server/saveIt/settings.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4810,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2836,
+								2836
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2011.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/h p/Desktop/saveIt/saveit-server/saveIt/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1438,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 333.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "user.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2066,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								269,
+								261
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 79.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 268.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
