@@ -117,7 +117,7 @@ getQueryReply(req, callback) {
         var answer_id = data.answer;
         var query = {_id:ObjectId(data.id),"answers.id":answer_id};
         //console.log(query);
-        db.collection('feeds').findOne(query,{ answers: { $elemMatch: { id: answer_id } } } ,function(err,result){
+        db.collection('feeds').findOne(query,{ answers: { $elemMatch: { id: answer_id } },_id:0 } ,function(err,result){
             if(err)
             {
                 console.log(err);
