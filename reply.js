@@ -115,6 +115,7 @@ getQueryReply(req, callback) {
         var data = req.body;
         var db = dbConnection.getDb();
         var answer_id = data.answer;
+        var qid=data.id;
         var query = {_id:ObjectId(data.id),"answers.id":answer_id};
         //console.log(query);
         db.collection('feeds').findOne(query,{ answers: { $elemMatch: { id: answer_id } },_id:0 } ,function(err,result){
@@ -141,7 +142,7 @@ getQueryReply(req, callback) {
                 //process.exit();
                 console.log(result);
                 console.log("result");
-                query = {_id:ObjectId(data.id)};
+                query = {_id:ObjectId(qid)};
                 db.collection("feeds").updateOne(query, {$set:result}, function(err, res) {
                     //console.log(err+"hdhdh");
                  
