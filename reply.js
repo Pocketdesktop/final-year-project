@@ -36,7 +36,7 @@ module.exports = {
                 db.collection("feeds").updateOne(query, result, function(err, res) {
                     //console.log(err+"hdhdh");
                   console.log(res);
-                callback(err,res);
+                callback(err,data);
                 });
             }
         });
@@ -143,8 +143,8 @@ getQueryReply(req, callback) {
                 //process.exit();
                 db.collection("feeds").updateOne(query, result, function(err, res) {
                     //console.log(err+"hdhdh");
-                 console.log(res);
-                callback(err,res);
+                 console.log(data);
+                callback(err,data);
                 });
             }
         });

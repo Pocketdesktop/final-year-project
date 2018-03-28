@@ -23,7 +23,8 @@ router.post('/queryreply',authenticate.isAuthenticated, function(req, res) {
             });
         } else {
             res.json({
-                "query reply": "successful"
+                "query reply": "successful",
+                "result":result
             });
         }
     });
@@ -75,7 +76,8 @@ router.post('/answerreply',authenticate.isAuthenticated, function(req, res) {
             });
         } else {
             res.json({
-                "answer reply": "successful"
+                "answer reply": "successful",
+                "result":result
             });
         }
     });
