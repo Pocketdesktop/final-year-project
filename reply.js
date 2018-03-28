@@ -129,7 +129,7 @@ getQueryReply(req, callback) {
                 //console.log(data);
                 data["reply_time"] = new Date(utilities.getDateTime());
                 data["reply_by"] = utilities.getToken(req).username;
-                result.answers[answer_id].reply_count=result.answers[answer_id].reply_count+1;
+                result.answers[0].reply_count=result.answers[0].reply_count+1;
                 test="reply_"+result.answers[0].reply_count;
                 console.log(test);
                 data["id"]=test;
