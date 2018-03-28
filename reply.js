@@ -133,15 +133,18 @@ getQueryReply(req, callback) {
                 test="reply_"+result.answers[0].reply_count;
                 console.log(test);
                 data["id"]=test;
-                data["len"]=0;
-                //data["len"]=result.answers[0].len
+                //data["len"]=0;
                 delete data["answer"];
                 result.answers[0].reply.push(data);
                 console.log(result);
+
                 //process.exit();
-                db.collection("feeds").updateOne(query, result, function(err, res) {
+                console.log(result);
+                console.log("result");
+                query = {_id:ObjectId(data.id)};
+                db.collection("feeds").updateOne(query, {$set:result}, function(err, res) {
                     //console.log(err+"hdhdh");
-                 console.log(data);
+                 
                 callback(err,data);
                 });
             }
