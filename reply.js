@@ -28,6 +28,7 @@ module.exports = {
                 test="reply_"+result.replycount;
                 console.log(test);
                 data["id"]=test;
+                data["len"]=0
                 result.reply.push(data);
                 //console.log(result.answers);
                 //console.log(result.answers);
@@ -128,17 +129,14 @@ getQueryReply(req, callback) {
                 //console.log(data);
                 data["reply_time"] = new Date(utilities.getDateTime());
                 data["reply_by"] = utilities.getToken(req).username;
-                //console.log(data);
-                //process.exit(); 
-                //console.log(result);
                 result.answers[answer_id].reply_count=result.answers[answer_id].reply_count+1;
-                test="reply_"+result.answers[answer_id].reply_count;
+                test="reply_"+result.answers[0].reply_count;
                 console.log(test);
                 data["id"]=test;
+                data["len"]=0;
+                //data["len"]=result.answers[0].len
                 delete data["answer"];
-                result.answers[answer_id].reply[test]=data;
-                //console.log(result.answers);
-                //console.log(result.answers);
+                result.answers[0].reply.push(data);
                 console.log(result);
                 //process.exit();
                 db.collection("feeds").updateOne(query, result, function(err, res) {
@@ -154,9 +152,9 @@ getQueryReply(req, callback) {
  getAnswerReply(req, callback) {
         var data = req.body;
         var db = dbConnection.getDb();
-        var query = {_id:ObjectId(data.id)};
+        var query = {_id:ObjectId(data.id),"answers.id":answer_id};
         //console.log(query);
-        db.collection('feeds').findOne(query,{answers:1},function(err,result){
+        db.collection('feeds').findOne(query,{ answers: { $elemMatch: { id: answer_id } } },function(err,result){
             if(err)
             {
                 console.log(err);
@@ -166,8 +164,8 @@ getQueryReply(req, callback) {
                 var answer_id = data.answerid;
                 console.log(answer_id);
                 data={};
-                data['replycount']=result.answers[answer_id].reply_count;
-                data["reply"]=result.answers[answer_id].reply;
+                data['replycount']=result.answers[0].reply_count;
+                data["reply"]=result.answers[0].reply;
                 callback(err,data);
                
             }
