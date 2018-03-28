@@ -10,11 +10,11 @@ module.exports = {
         var data = req.body;
         data["time"] = new Date(utilities.getDateTime());
         data["status"] = "ok";
-        data["answers"] = {};
+        data["answers"] = [];
         data["answercount"] = 0;
         data["query_by"] = utilities.getToken(req).username;
         data["replycount"] = 0;
-        data["reply"] = {};
+        data["reply"] = [];
         data["followed_by"] = [];
 
         console.log(data);
@@ -47,7 +47,7 @@ module.exports = {
         var query={_id:ObjectId(data.id)};
         console.log(query);
           var db = dbConnection.getDb();
-          db.collection('feeds').findOne(query,{reply:0,replycount:0},function(err,result)
+          db.collection('feeds').findOne(query,{reply:0,replycount:0,'answers.reply':0},function(err,result)
             {
 
                   console.log(result);
@@ -124,20 +124,17 @@ module.exports = {
     			data["upvotes"] = 0;
     			data["answer_status"] = "ok";
     			data["reply_count"] = 0;
-    			data["reply"] = {};
-    			//console.log(data);
-    			//process.exit();
+    			data["reply"] = [];
 
     			result.answercount=result.answercount+1;
                 test="answer_"+result.answercount;
-                console.log(test);
-    			delete data["id"];
+    			data["id"]=test;
     			if(result.answercount==0)
     			{
-    				result["answers"]={};
+    				result["answers"]=[];
     			}
     			
-    			result.answers[test]=data;
+    			result.answers.push(data);
     			//console.log(result.answers);
     			//console.log(result.answers);
   				console.log(result);
@@ -173,11 +170,6 @@ module.exports = {
     			//console.log(res);
     			callback(err,res);
     		});
-
-
-
-
-
 
     }    
     };
