@@ -152,6 +152,7 @@ getQueryReply(req, callback) {
  getAnswerReply(req, callback) {
         var data = req.body;
         var db = dbConnection.getDb();
+        var answer_id = data.answerid;
         var query = {_id:ObjectId(data.id),"answers.id":answer_id};
         //console.log(query);
         db.collection('feeds').findOne(query,{ answers: { $elemMatch: { id: answer_id } } },function(err,result){
@@ -161,7 +162,7 @@ getQueryReply(req, callback) {
                 callback(err,result);
             }
             else{
-                var answer_id = data.answerid;
+                
                 console.log(answer_id);
                 data={};
                 data['replycount']=result.answers[0].reply_count;
