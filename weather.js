@@ -53,6 +53,39 @@ request(url, function (err, response, body) {
 
 
 });
+
+
+
+
+router.post('/gethourlyweather',function(req,res){
+	var lat = req.body.lat;
+	var lon = req.body.lon;
+	var url=config.hourlybaseurl+"lat="+lat+"&lon="+lon+"&units=metric&appid="+config.weatherapikey;
+	console.log(url);
+	request(url,function(err, response, body)
+	{
+		if(err)
+		{
+			console.log(err);
+		}
+		else
+		{
+			console.log(body);
+			res.json(JSON.parse(body));
+		}
+
+
+
+	})
+
+
+
+
+
+
+
+
+});
 module.exports = router;
 
 

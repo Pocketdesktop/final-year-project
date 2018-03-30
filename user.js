@@ -6,28 +6,42 @@ var fs = require('fs');
 
 module.exports = {
     addUser(userData, callback) {
-        var db = dbConnection.getDb();
-        userData["query_follow"] = [];
-        userData["user_follow"] = [];
-        userData["followed_by"] = [];
-        var plainPassword = userData.password;
-        bcrypt.hash(plainPassword,10, function(err, hash) {
-            if (err) {
-                console.log(err);
-                callback(err, hash);
-            } else {
-                console.log(hash + "this is password hash");
-                userData.password = hash;
-                console.log(userData + "\nthis is another hash");
-                db.collection('users').insertOne(userData, function(err, response) {
-                    if (err)
-                        console.log(err);
-                    else
-                        console.log("user added succesfully");
+
+        this.userExists(userData.username,function(replycode)
+        {
+            if(replycode)
+            {
+                callback(1,0);
+
+            }
+            else
+            {
+                var db = dbConnection.getDb();
+                userData["query_follow"] = [];
+                userData["user_follow"] = [];
+                userData["followed_by"] = [];
+                var plainPassword = userData.password;
+                bcrypt.hash(plainPassword,10, function(err, hash) {
+                if (err) {
+                    console.log(err);
+                    callback(err, hash);
+                } else {
+                    console.log(hash + "this is password hash");
+                    userData.password = hash;
+                    console.log(userData + "\nthis is another hash");
+                    db.collection('users').insertOne(userData, function(err, response) {
+                        if (err)
+                            console.log(err);
+                        else
+                            console.log("user added succesfully");
                 });
                 callback(err, hash);
             }
+        });    
+            }
+
         });
+        
     },
 
 

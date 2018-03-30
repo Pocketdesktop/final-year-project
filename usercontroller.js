@@ -21,10 +21,9 @@ router.post('/register', function(req, res) {
         if (err) {
             console.log(err);
             res.json({
-                "register error": "registration unsuccessful"
+                "register": "registration unsuccessful"
             });
         } else {
-
              jwt.sign({
                         username: req.body.username
                     }, config.secretKey, {
@@ -33,6 +32,7 @@ router.post('/register', function(req, res) {
                         console.log(token);
                         console.log(err);
                         res.json({
+                            "username":req.body.username,
                             "token": token
                         });
                     });

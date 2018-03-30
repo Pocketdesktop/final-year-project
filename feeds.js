@@ -16,9 +16,10 @@ module.exports = {
         data["replycount"] = 0;
         data["reply"] = [];
         data["followed_by"] = [];
-
+        data["notification"]=[];
+        data["len"]=0;
+        data["follow_count"]=0;
         console.log(data);
-		//process.exit();
                 db.collection('feeds').insertOne(data, function(err, response) {
                     if (err)
                         console.log(err);
@@ -34,7 +35,7 @@ module.exports = {
 	{
 		  var db = dbConnection.getDb();
           db.collection('feeds').find({},{query:1,query_by:1,tags:1,status:1,time:1,description
-            :1}).sort({time:-1}).toArray()
+            :1,len:1}).sort({time:-1}).toArray()
               .then(function(items) {
                   console.log("items= "+items);
                   callback(items);
@@ -49,12 +50,9 @@ module.exports = {
           var db = dbConnection.getDb();
           db.collection('feeds').findOne(query,{reply:0,replycount:0,'answers.reply':0},function(err,result)
             {
-
-                  console.log(result);
-
+                console.log(result);
                 if(err)
             {
-
                 console.log(err);
                 callback(err,result);
             }
@@ -90,7 +88,7 @@ module.exports = {
     				db.collection('feeds').remove(query,function(errr,response){
     					console.log("errr = "+errr);
     					console.log("response = "+response);
-    				callback(err,response);
+    				    callback(err,response);
 			    	})    				
     			}
     			else
@@ -125,24 +123,22 @@ module.exports = {
     			data["answer_status"] = "ok";
     			data["reply_count"] = 0;
     			data["reply"] = [];
-
     			result.answercount=result.answercount+1;
+                result.len=result.len+1;
                 test="answer_"+result.answercount;
     			data["id"]=test;
+                data["len"]=0;
+                data["upvotes_by"]=[];
+                data["notification"]=[];
     			if(result.answercount==0)
     			{
     				result["answers"]=[];
-    			}
-    			
+    			}	
     			result.answers.push(data);
-    			//console.log(result.answers);
-    			//console.log(result.answers);
   				console.log(result);
-  				//process.exit();
   				db.collection("feeds").updateOne(query, result, function(err, res) {
   					console.log(err+"hdhdh");
-  				//	console.log(res);
-    			callback(err,result);
+    			     callback(err,result);
     			});
     		}
     	})

@@ -25,13 +25,11 @@ module.exports = {
                 //console.log(data);
                 //process.exit();
                 result.replycount=result.replycount+1;
+                result.len=result.len+1;
                 test="reply_"+result.replycount;
                 console.log(test);
                 data["id"]=test;
-                data["len"]=0
                 result.reply.push(data);
-                //console.log(result.answers);
-                //console.log(result.answers);
                 console.log(result);
                 //process.exit();
                 db.collection("feeds").updateOne(query, result, function(err, res) {
@@ -131,6 +129,7 @@ getQueryReply(req, callback) {
                 data["reply_time"] = new Date(utilities.getDateTime());
                 data["reply_by"] = utilities.getToken(req).username;
                 result.answers[0].reply_count=result.answers[0].reply_count+1;
+                result.answers[0].len=result.answers[0].len+1;
                 test="reply_"+result.answers[0].reply_count;
                 console.log(test);
                 data["id"]=test;
