@@ -2,7 +2,7 @@ var MongoClient = require('mongodb').MongoClient;
 var dbConnection = require('./dbconnection');
 var bcrypt = require('bcrypt');
 var path = require('path');
-var fs = require('fs');
+
 
 module.exports = {
     addUser(userData, callback) {
@@ -20,6 +20,15 @@ module.exports = {
                 userData["query_follow"] = [];
                 userData["user_follow"] = [];
                 userData["followed_by"] = [];
+                if(userData.role == "Farmer")
+                {
+                 console.log("i am a farmer");
+                userData["verified"] = 1;
+                }
+                else
+                {
+                    userData["verified"] = 0;
+                }
                 var plainPassword = userData.password;
                 bcrypt.hash(plainPassword,10, function(err, hash) {
                 if (err) {

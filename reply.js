@@ -2,6 +2,7 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectId;
 var dbConnection = require('./dbconnection');
 var utilities = require('./utilities');
+var notification = require('./notification');
 
 
 module.exports = {
@@ -30,11 +31,19 @@ module.exports = {
                 console.log(test);
                 data["id"]=test;
                 result.reply.push(data);
-                console.log(result);
+                if(! result.notification.include(utilities.getToken(req).username))
+                    result.notification.push(utilities.getToken(req).username);
+                //console.log(result);
                 //process.exit();
                 db.collection("feeds").updateOne(query, result, function(err, res) {
-                    //console.log(err+"hdhdh");
-                  console.log(res);
+                
+                notificationdata={}
+                notificationdata["user"]=utilities.getToken(req).username;
+                notificationdata["alluser"]=result.notification;
+                notificationdata["type"]="queryreply";
+                notificationdata["id"]=data["id"]
+                notificationdata["time"]=new Date(utilities.getDateTime());
+                notification.addNotification(notificationdata);
                 callback(err,data);
                 });
             }
@@ -141,6 +150,14 @@ getQueryReply(req, callback) {
                 //process.exit();
                 console.log(result);
                 console.log("result");
+                notificationdata={}
+                notificationdata["user"]=utilities.getToken(req).username;
+                notificationdata["alluser"]=result.answers[0].notification;
+                notificationdata["type"]="answerreply";
+                notificationdata["id"]=data["id"]
+                notificationdata["time"] = new Date(utilities.getDateTime());
+
+                notification.addNotification(notificationdata);
                 query = {_id:ObjectId(qid)};
                 db.collection("feeds").updateOne(query, {$set:result}, function(err, res) {
                     //console.log(err+"hdhdh");

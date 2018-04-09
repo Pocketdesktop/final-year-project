@@ -26,8 +26,21 @@ router.post('/queryfollow',authenticate.isAuthenticated, function(req, res) {
             });
         }
     });
-});
+}
+);
 
+router.post('/answerfollow',authenticate.isAuthenticated, function(req, res) {
+    //console.log(req.body);
+    follow.answerFollow(req, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.json({result});
+        } else {
+            res.json({result});
+        }
+    });
+}
+);
 
 
 

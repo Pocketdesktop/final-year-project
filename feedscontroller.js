@@ -5,6 +5,7 @@ var feeds = require('./feeds');
 var jwt = require('jsonwebtoken');
 var config = require('./config');
 var authentication = require('./authentications');
+var utilities = require('./utilities');
 
 
 router.use(bodyParser.urlencoded({
@@ -31,10 +32,23 @@ router.post('/addquery',authentication.isAuthenticated,function(req, res) {
 });
 
 
-router.get('/getallpost', function(req,res){
+router.get('/getallpost',authentication.isAuthenticated, function(req,res){
     console.log(req.body);
     feeds.getAllPost(function(result){
-            res.json({"all posts":result});
+            //res.json({"all posts":result});
+            console.log(result)
+            var user = utilities.getToken(req).username
+            var data=[]
+            for(var i=0;i<result.length;i++)
+            {
+                if (result[i].followed_by.includes(user))
+                   result[i].follow=true;
+                else
+                    result[i].follow=false;
+
+
+            }
+           res.json({"all posts":result}); 
     });
 });
 

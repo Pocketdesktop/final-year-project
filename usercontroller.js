@@ -13,8 +13,6 @@ router.use(bodyParser.urlencoded({
 
 
 
-
-
 router.post('/register', function(req, res) {
     console.log(req.body);
     user.addUser(req.body, function(err, result) {
@@ -64,7 +62,15 @@ router.post('/login', function(req, res) {
     user.getUser(req.body.username, function(err, response) {
         console.log(req.body);
         console.log(response + "hellohello");
-        if (response) {
+        if(response.verified == 0)
+        {
+            console.log("account not verified");
+             res.json({
+                        "login_error": "account not verfied"
+                    });
+
+        }
+        else if (response) {
             console.log(req.body.password + " " + response.password)
             bcrypt.compare(req.body.password, response.password, function(err, responseBcrypt) {
                 if (responseBcrypt) {
@@ -88,7 +94,7 @@ router.post('/login', function(req, res) {
 
                     console.log("password is incorrect");
                     res.json({
-                        "login error": "username or password incorrect"
+                        "login_error": "username or password incorrect"
                     });
                     // Passwords don't match
                 }
@@ -97,7 +103,7 @@ router.post('/login', function(req, res) {
             console.log(err);
             console.log("username incorrect");
             res.json({
-                "login error": "username or passwor incorrect"
+                "login_error": "username or passwor incorrect"
             });
         }
     });

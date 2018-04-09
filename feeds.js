@@ -2,6 +2,7 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectId;
 var dbConnection = require('./dbconnection');
 var utilities = require('./utilities');
+var notification = require('./notification');
 
 module.exports = {
 
@@ -17,6 +18,7 @@ module.exports = {
         data["reply"] = [];
         data["followed_by"] = [];
         data["notification"]=[];
+        data["notification"].push(utilities.getToken(req).username);
         data["len"]=0;
         data["follow_count"]=0;
         console.log(data);
@@ -35,7 +37,7 @@ module.exports = {
 	{
 		  var db = dbConnection.getDb();
           db.collection('feeds').find({},{query:1,query_by:1,tags:1,status:1,time:1,description
-            :1,len:1}).sort({time:-1}).toArray()
+            :1,len:1,followed_by:1}).sort({time:-1}).toArray()
               .then(function(items) {
                   console.log("items= "+items);
                   callback(items);
@@ -130,13 +132,22 @@ module.exports = {
                 data["len"]=0;
                 data["upvotes_by"]=[];
                 data["notification"]=[];
+                data["notification"].push(utilities.getToken(req).username);
     			if(result.answercount==0)
     			{
     				result["answers"]=[];
     			}	
     			result.answers.push(data);
-  				console.log(result);
-  				db.collection("feeds").updateOne(query, result, function(err, res) {
+                if(! result.notification.include(utilities.getToken(req).username))
+                    result.notification.push(utilities.getToken(req).username);
+  				notificationdata={}
+                notificationdata["user"]=utilities.getToken(req).username;
+                notificationdata["alluser"]=result.notification;
+                notificationdata["type"]="answer";
+                notificationdata["id"]=data["id"]
+                notificationdata["time"]=new Date(utilities.getDateTime());
+                notification.addNotification(notificationdata);
+                db.collection("feeds").updateOne(query, result, function(err, res) {
   					console.log(err+"hdhdh");
     			     callback(err,result);
     			});
