@@ -7,6 +7,7 @@ var userController = require('./usercontroller');
 var feedsController = require('./feedscontroller');
 var replyController = require('./replyController');
 var followController = require('./followcontroller');
+var notificationController = require('./notificationcontroller');
 var weather = require('./weather');
 var article = require('./article');
 var scheme = require('./scheme');
@@ -66,6 +67,8 @@ app.use('/follow', followController);
 app.use('/weather', weather);
 app.use('/article', article);
 app.use('/scheme', scheme);
+app.use('/notification',notificationController);
+
 
 app.listen(config.port, function(err) {
     if (err) {

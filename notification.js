@@ -22,10 +22,10 @@ module.exports = {
 
 	getAllNotification(req,callback)
 	{
-		
+		var db = dbConnection.getDb();
         user=utilities.getToken(req).username;
         //console.log(query);
-        db.collection('notifications').find({alluser:user}).sort({time:-1}).toArray()
+        db.collection('notifications').find({alluser:user},{alluser:0}).sort({time:-1}).toArray()
               .then(function(items) {
                   console.log("items= "+items);
                   callback(items);
@@ -34,7 +34,7 @@ module.exports = {
 
 	getNotificationCount(req,callback)
 	{
-		
+		var db = dbConnection.getDb();
         user=utilities.getToken(req).username;
         //console.log(query);
         db.collection('notifications').find({$and : [{alluser:user},{user : {$ne:user}},{read:false}]},{alluser:0}).sort({time:-1}).toArray()

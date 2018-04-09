@@ -6,7 +6,7 @@ var config = require('./config');
 var bcrypt = require('bcrypt');
 var authenticate = require('./authentications');
 var notification = require('./notification');
-
+var utilities = require('./utilities');
 router.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -15,7 +15,7 @@ router.get('/getallnotification',authenticate.isAuthenticated, function(req, res
 
     notification.getAllNotification(req, function(result) {
       
-            console.log(err);
+            
             data=[]
             user=utilities.getToken(req).username;
             for(var i=0;i<result.length;i++)
@@ -24,6 +24,7 @@ router.get('/getallnotification',authenticate.isAuthenticated, function(req, res
             	{
             		data.push(result[i])
             	}
+            	console.log(result[i].user);
             }
             res.json({
                 "result": data
