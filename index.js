@@ -19,7 +19,7 @@ const fileUpload = require('express-fileupload');
 
 
 app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', exten ded: true}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use('/image', express.static('image'))
 
