@@ -77,7 +77,8 @@ router.post('/login', function(req, res) {
                     // Passwords match
                     console.log("password is correct");
                     jwt.sign({
-                        username: response.username
+                        username: response.username,
+                        role: response.role
                     }, config.secretKey, {
                         algorithm: 'HS256'
                     }, function(err, token) {
@@ -87,7 +88,8 @@ router.post('/login', function(req, res) {
                         res.json({
                             "token": token,
                             "username": response.username,
-                            "id":id
+                            "id":id,
+                            "role":response.role
                         });
                     });
                 } else {

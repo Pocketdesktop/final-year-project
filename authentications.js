@@ -29,7 +29,48 @@ isAuthenticated(req, res, next) {
     }
     //console.log(req.headers.authorization);
     //});
+},
+
+
+isSciIndBdy(req,res,next)
+{
+    if(req.headers.authorization){
+        var token = req.headers.authorization.replace('bearer ', '');
+        console.log(token);
+        var decoded = jwt.decode(token);
+        if(decoded.role == "Scientist" || decoded.role == "Industrial Body")
+        {
+            next();
+        }
+        else
+        {
+            res.json({'error':'you are not authorised to do this job'});
+        }
+
+    }
+},
+
+isGovBdy(req,res,next)
+{
+    if(req.headers.authorization){
+        var token = req.headers.authorization.replace('bearer ', '');
+        console.log(token);
+        var decoded = jwt.decode(token);
+        if(decoded.role == "Government Body")
+        {
+            next();
+        }
+        else
+        {
+            res.json({'error':'you are not authorised to do this job'});
+        }
+
+    }
 }
+
+
+
+
 
 
 };

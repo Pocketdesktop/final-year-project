@@ -47,6 +47,7 @@ module.exports = {
     getAllPostDetail(req,callback)
     {   
         var data = req.body;
+        var user=utilities.getToken(req).username;
         var query={_id:ObjectId(data.id)};
         console.log(query);
           var db = dbConnection.getDb();
@@ -57,9 +58,19 @@ module.exports = {
             {
                 console.log(err);
                 callback(err,result);
+
             }
             else
             {
+                if(result.followed_by.includes(user))
+                {
+                    result.follow=true;
+                }
+                else
+                {
+                    result.follow=false;
+                }
+                result.follow_count=result.followed_by.length;
                 callback(err,result);
             }
 
@@ -138,7 +149,7 @@ module.exports = {
     				result["answers"]=[];
     			}	
     			result.answers.push(data);
-                if(! result.notification.include(utilities.getToken(req).username))
+                if(! result.notification.includes(utilities.getToken(req).username))
                     result.notification.push(utilities.getToken(req).username);
   				notificationdata={}
                 notificationdata["user"]=utilities.getToken(req).username;

@@ -14,7 +14,7 @@ router.use(bodyParser.urlencoded({
 }));
 
 
-router.post('/uploadpdf',authentication.isAuthenticated,function(req, res) {
+router.post('/uploadpdf',authentication.isAuthenticated,authentication.isGovBdy, function(req, res) {
 	console.log(req.files.file);
 	console.log(req.body.scheme_heading);
 	console.log(req.body.scheme_description);

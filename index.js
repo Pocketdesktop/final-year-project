@@ -17,16 +17,14 @@ var app = express();
 const fileUpload = require('express-fileupload');
 //var express    = require('express')    
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', exten ded: true}));
+
 app.use('/image', express.static('image'))
 
 app.use(fileUpload());
 
-console.log("before");
-app.use(bodyParser.json());
-console.log("after");
 app.use(morgan('dev'));
 
 
@@ -60,6 +58,7 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use("/pdf",express.static('pdf'));
 app.use('/user', userController);
 app.use('/query', feedsController);
 app.use('/reply', replyController);
@@ -70,6 +69,7 @@ app.use('/scheme', scheme);
 app.use('/notification',notificationController);
 
 
+
 app.listen(config.port, function(err) {
     if (err) {
         console.log(err);
@@ -78,3 +78,4 @@ app.listen(config.port, function(err) {
 
     }
 });
+
