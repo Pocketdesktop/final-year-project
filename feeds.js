@@ -144,6 +144,7 @@ module.exports = {
                 notificationdata["user"]=utilities.getToken(req).username;
                 notificationdata["alluser"]=result.notification;
                 notificationdata["type"]="answer";
+                notificationdata["notification"]="post a answer on "+result.query;
                 notificationdata["id"]=data["id"]
                 notificationdata["time"]=new Date(utilities.getDateTime());
                 notification.addNotification(notificationdata);

@@ -36,6 +36,7 @@ module.exports = {
                 notificationdata["alluser"]=result.notification;
                 notificationdata["type"]="queryfollow";
                 notificationdata["time"] = new Date(utilities.getDateTime());
+                 notificationdata["notification"]="follow  <b>  "+result.query +"</b> question";
                 notification.addNotification(notificationdata);
   				db.collection("feeds").updateOne(query, result, function(err, res) {
   					console.log(err+"hdhdh");
@@ -84,6 +85,7 @@ module.exports = {
                 notificationdata["alluser"]=result.answers[0].notification;
                 notificationdata["type"]="answerfollow";
                 notificationdata["time"] = new Date(utilities.getDateTime());
+                notificationdata["notification"]="follow   <b>  "+result.answers[0].answer +" answer </b> answer";
                 notification.addNotification(notificationdata);
                 query = {_id:ObjectId(qid)};
                 db.collection("feeds").updateOne(query, {$set:result}, function(err, res) {                     

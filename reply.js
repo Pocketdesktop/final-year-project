@@ -36,11 +36,11 @@ module.exports = {
                 //console.log(result);
                 //process.exit();
                 db.collection("feeds").updateOne(query, result, function(err, res) {
-                
                 notificationdata={}
                 notificationdata["user"]=utilities.getToken(req).username;
                 notificationdata["alluser"]=result.notification;
                 notificationdata["type"]="queryreply";
+                notificationdata["notification"]="post a reply on <b> "+result.query +"</b>";
                 notificationdata["id"]=data["id"]
                 notificationdata["time"]=new Date(utilities.getDateTime());
                 notification.addNotification(notificationdata);
@@ -154,6 +154,7 @@ getQueryReply(req, callback) {
                 notificationdata["user"]=utilities.getToken(req).username;
                 notificationdata["alluser"]=result.answers[0].notification;
                 notificationdata["type"]="answerreply";
+                notificationdata["notification"]="post a reply on <b>"+result.answers[0].answer +"</b>";
                 notificationdata["id"]=data["id"]
                 notificationdata["time"] = new Date(utilities.getDateTime());
 

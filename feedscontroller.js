@@ -45,7 +45,7 @@ router.get('/getallpost',authentication.isAuthenticated, function(req,res){
                    result[i].follow=true;
                 else
                     result[i].follow=false;
-
+                result[i].follow_count=result[i].followed_by.length
 
             }
            res.json({"all posts":result}); 
