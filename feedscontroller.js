@@ -57,7 +57,7 @@ router.post('/getpostdetail', function(req,res){
     console.log(req.body);
     feeds.getAllPostDetail(req,function(err,result){
 
-            for(var i=0;i<result.answers.length,i++)
+            for(var i=0;i<result.answers.length;i++)
              {
                 if (result.answers[i].followed_by.includes(user))
                    result.answers[i].follow=true;
