@@ -53,7 +53,7 @@ module.exports = {
 	{
 		var data = req.body;
         var db = dbConnection.getDb();
-        var answer_id = data.answer;
+        var answer_id = data.answerid;
         var qid=data.id;
         var query = {_id:ObjectId(data.id),"answers.id":answer_id};
         //console.log(query);
