@@ -69,13 +69,13 @@ module.exports = {
                 data["success"]=true
 
                 console.log(result);
-                if(! result.answers[0].followed_by.includes(utilities.getToken(req).username))
+                if(! result.answers[0].upvotes_by.includes(utilities.getToken(req).username))
     				
-    				{result.answers[0].followed_by.push(utilities.getToken(req).username)
+    				{result.answers[0].upvotes_by.push(utilities.getToken(req).username)
     					data["follow"]=true;
     				}
     			else
-    				{result.answers[0].followed_by.splice(result.followed_by.indexOf(utilities.getToken(req).username), 1);
+    				{result.answers[0].upvotes_by.splice(result.answers[0].upvotes_by.indexOf(utilities.getToken(req).username), 1);
                 		data["follow"]=false;
                 	}
                 if(! result.answers[0].notification.includes(utilities.getToken(req).username))

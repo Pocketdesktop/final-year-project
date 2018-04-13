@@ -59,14 +59,13 @@ router.post('/getpostdetail', function(req,res){
 
             for(var i=0;i<result.answers.length;i++)
              {
-                if (result.answers[i].followed_by.includes(user))
+                if (result.answers[i].upvotes_by.includes(user))
                    result.answers[i].follow=true;
                 else
                     result.answers[i].follow=false;
                 result.answers[i].follow_count=result.answers[i].followed_by.length
 
             }
-
 
             res.json({"all posts":result,succes:true});
 
