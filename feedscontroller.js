@@ -56,7 +56,7 @@ router.get('/getallpost',authentication.isAuthenticated, function(req,res){
 router.post('/getpostdetail', function(req,res){
     console.log(req.body);
     feeds.getAllPostDetail(req,function(err,result){
-
+            var user = utilities.getToken(req).username;
             for(var i=0;i<result.answers.length;i++)
              {
                 if (result.answers[i].upvotes_by.includes(user))
