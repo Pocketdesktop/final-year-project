@@ -63,7 +63,7 @@ router.post('/getpostdetail', function(req,res){
                    result.answers[i].follow=true;
                 else
                     result.answers[i].follow=false;
-                result.answers[i].follow_count=result.answers[i].followed_by.length
+                result.answers[i].follow_count=result.answers[i].upvotes_by.length
 
             }
 
