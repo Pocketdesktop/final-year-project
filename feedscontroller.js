@@ -46,6 +46,10 @@ router.get('/getallpost',authentication.isAuthenticated, function(req,res){
                 else
                     result[i].follow=false;
                 result[i].follow_count=result[i].followed_by.length
+                result[i].answer_count=result[i].answers.length;
+                result[i].reply_count=result[i].reply.length;
+                delete result[i].answers;
+                delete result[i].reply;
 
             }
            res.json({"all posts":result}); 
@@ -62,7 +66,11 @@ router.get('/getallposts',function(req,res){
             for(var i=0;i<result.length;i++)
             {
                
-                result[i].follow_count=result[i].followed_by.length
+                result[i].follow_count=result[i].followed_by.length;
+                result[i].answer_count=result[i].answers.length;
+                result[i].reply_count=result[i].reply.length;
+                delete result[i].answers;
+                delete result[i].reply;
 
             }
            res.json({"all posts":result}); 
@@ -105,6 +113,7 @@ router.get('/userallanswer',authentication.isAuthenticated, function(req,res){
                 else
                     result[i].answers[j].follow=false;
                 result[i].answers[j].follow_count=result[i].answers[j].upvotes_by.length
+                
                 console.log(i+" "+j);
                 }
             }

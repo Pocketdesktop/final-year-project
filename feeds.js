@@ -37,7 +37,7 @@ module.exports = {
 	{
 		  var db = dbConnection.getDb();
           db.collection('feeds').find({},{query:1,query_by:1,tags:1,status:1,time:1,description
-            :1,len:1,followed_by:1}).sort({time:-1}).toArray()
+            :1,len:1,followed_by:1,answers:1,reply:1}).sort({time:-1}).toArray()
               .then(function(items) {
                   console.log("items= "+items);
                   callback(items);
@@ -74,7 +74,7 @@ module.exports = {
         var query={_id:ObjectId(data.id)};
         console.log(query);
           var db = dbConnection.getDb();
-          db.collection('feeds').findOne(query,{reply:0,replycount:0,'answers.reply':0},function(err,result)
+          db.collection('feeds').findOne(query,{replycount:0,'answers.reply':0},function(err,result)
             {
                 console.log(result);
                 if(err)

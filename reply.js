@@ -31,7 +31,7 @@ module.exports = {
                 console.log(test);
                 data["id"]=test;
                 result.reply.push(data);
-                if(! result.notification.include(utilities.getToken(req).username))
+                if(! result.notification.includes(utilities.getToken(req).username))
                     result.notification.push(utilities.getToken(req).username);
                 //console.log(result);
                 //process.exit();
