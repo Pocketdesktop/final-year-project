@@ -94,9 +94,23 @@ router.get('/userallanswer',authentication.isAuthenticated, function(req,res){
     console.log(req.body);
     feeds.userAllAnswer(req,function(result){
             //res.json({"all posts":result});
-            console.log(result)
+           var user = utilities.getToken(req).username
+
+            for(var i=0;i<result.length;i++)
+             {
+                for(var j=0;j<result[i].answers.length;j++)
+                {
+                if (result[i].answers[j].upvotes_by.includes(user))
+                   result[i].answers[j].follow=true;
+                else
+                    result[i].answers[j].follow=false;
+                result[i].answers[j].follow_count=result[i].answers[j].upvotes_by.length
+                console.log(i+" "+j);
+                }
+            }
             
-           res.json({"all posts":result}); 
+            
+           res.json({"all ddposts":result}); 
     });
 });
 
