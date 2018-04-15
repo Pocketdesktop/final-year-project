@@ -11,10 +11,11 @@ var notificationController = require('./notificationcontroller');
 var weather = require('./weather');
 var article = require('./article');
 var scheme = require('./scheme');
+const fileUpload = require('express-fileupload');
 var dbConnect = require('./dbconnection');
 var app = express();
 
-const fileUpload = require('express-fileupload');
+
 //var express    = require('express')    
 
 

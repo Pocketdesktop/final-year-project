@@ -53,6 +53,54 @@ router.get('/getallpost',authentication.isAuthenticated, function(req,res){
 });
 
 
+router.get('/getallposts',function(req,res){
+    console.log(req.body);
+    feeds.getAllPost(function(result){
+            //res.json({"all posts":result});
+            
+            var data=[]
+            for(var i=0;i<result.length;i++)
+            {
+               
+                result[i].follow_count=result[i].followed_by.length
+
+            }
+           res.json({"all posts":result}); 
+    });
+});
+
+router.get('/userallpost',authentication.isAuthenticated, function(req,res){
+    console.log(req.body);
+    feeds.userAllPost(req,function(result){
+            //res.json({"all posts":result});
+            console.log(result)
+            var user = utilities.getToken(req).username
+            var data=[]
+            for(var i=0;i<result.length;i++)
+            {
+                if (result[i].followed_by.includes(user))
+                   result[i].follow=true;
+                else
+                    result[i].follow=false;
+                result[i].follow_count=result[i].followed_by.length
+
+            }
+           res.json({"all posts":result}); 
+    });
+});
+
+
+router.get('/userallanswer',authentication.isAuthenticated, function(req,res){
+    console.log(req.body);
+    feeds.userAllAnswer(req,function(result){
+            //res.json({"all posts":result});
+            console.log(result)
+            
+           res.json({"all posts":result}); 
+    });
+});
+
+
 router.post('/getpostdetail', function(req,res){
     console.log(req.body);
     feeds.getAllPostDetail(req,function(err,result){

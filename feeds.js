@@ -43,6 +43,29 @@ module.exports = {
                   callback(items);
               });
 	},
+    userAllPost(req,callback)
+    {
+          var db = dbConnection.getDb();
+          var user=utilities.getToken(req).username;
+          db.collection('feeds').find({query_by:user},{query:1,query_by:1,tags:1,status:1,time:1,description
+            :1,len:1,followed_by:1}).sort({time:-1}).toArray()
+              .then(function(items) {
+                  console.log("items= "+items);
+                  callback(items);
+              });
+    },
+
+    userAllAnswer(req,callback)
+    {
+          var db = dbConnection.getDb();
+          var user=utilities.getToken(req).username;
+          console.log(user);
+          db.collection('feeds').find({"answers.answer_by":user},{answers:1,_id:1}).sort({time:-1}).toArray()
+              .then(function(items) {
+                  console.log("items= "+items);
+                  callback(items);
+              });
+    },
 
     getAllPostDetail(req,callback)
     {   
