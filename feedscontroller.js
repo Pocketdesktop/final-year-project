@@ -110,7 +110,7 @@ router.get('/userallanswer',authentication.isAuthenticated, function(req,res){
             }
             
             
-           res.json({"all ddposts":result}); 
+           res.json({"all posts":result}); 
     });
 });
 
