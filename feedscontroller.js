@@ -91,6 +91,10 @@ router.get('/userallpost',authentication.isAuthenticated, function(req,res){
                 else
                     result[i].follow=false;
                 result[i].follow_count=result[i].followed_by.length
+                result[i].answer_count=result[i].answers.length;
+                result[i].reply_count=result[i].reply.length;
+                delete result[i].answers;
+                delete result[i].reply;
 
             }
            res.json({"all posts":result}); 
