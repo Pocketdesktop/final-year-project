@@ -1,0 +1,9 @@
+{
+"_id":<Object>,
+"user":<String>,
+"alluser":<Array>,
+"type":<String>,
+"notification":<String>
+"id":<String>,
+"time":<Date & Time>,
+}

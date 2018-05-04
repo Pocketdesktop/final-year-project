@@ -2,6 +2,7 @@ var MongoClient = require('mongodb').MongoClient;
 var dbConnection = require('./dbconnection');
 var bcrypt = require('bcrypt');
 var path = require('path');
+var utilities = require('./utilities');
 
 
 module.exports = {
@@ -80,15 +81,32 @@ uploadPic(req, callback) {
         {
            //console.log(req.files);
         }
-        
+        var user=utilities.getToken(req).username; 
+        var query={"username":user};
         let sampleFile = req.files.file;
+
+        db.collection('users').findOne(query, function(err, result) {
+            console.log(err + " error");
+            console.log("result " + result);
+            callback(err, result);
+            sampleFile.mv('./image/'+user+'.png', function(err) {
+              if(err)
+              {
+
+              }
+              result.pic='./image/'+user+'.png';
+
+         db.collection("feeds").updateOne(query, result, function(err, res) {
+                    //console.log(err+"hdhdh");
+                     callback(err,result);
+                });
+
+
+          });
+        });
          
           // Use the mv() method to place the file somewhere on your server
-          sampleFile.mv('./image/name.png', function(err) {
-            
-         console.log(err);
-            callback(err,"pass")
-          });
+          
     },
 
     userExists(username, callback) {

@@ -10,6 +10,7 @@ var followController = require('./followcontroller');
 var notificationController = require('./notificationcontroller');
 var weather = require('./weather');
 var article = require('./article');
+var html = require('./htmlreander');
 var scheme = require('./scheme');
 const fileUpload = require('express-fileupload');
 var dbConnect = require('./dbconnection');
@@ -23,6 +24,11 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use('/image', express.static('image'))
+app.use('/css', express.static('css'))
+app.use('/dist', express.static('dist'))
+app.use('/fonts', express.static('fonts'))
+app.use('/images', express.static('images'))
+app.use('/js', express.static('js'))
 
 app.use(fileUpload());
 
@@ -68,6 +74,7 @@ app.use('/weather', weather);
 app.use('/article', article);
 app.use('/scheme', scheme);
 app.use('/notification',notificationController);
+app.use('/web',html);
 
 
 

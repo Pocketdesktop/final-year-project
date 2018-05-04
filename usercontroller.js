@@ -6,6 +6,7 @@ var jwt = require('jsonwebtoken');
 var config = require('./config');
 var bcrypt = require('bcrypt');
 var authenticate = require('./authentications');
+var utilities = require('./utilities');
 
 router.use(bodyParser.urlencoded({
     extended: true
@@ -120,7 +121,7 @@ router.get('/getuserdata', authenticate.isAuthenticated,function(req,res)
 
 });
 
-router.post('/uploadpic',function(req,res)
+router.post('/uploadpic',authenticate.isAuthenticated,function(req,res)
 {
     //console.log(req);
     user.uploadPic(req, function(err, response) {
@@ -130,10 +131,10 @@ router.post('/uploadpic',function(req,res)
 
 });
 
-router.get('/profilepic',function(req,res)
+router.post('/profilepic',authenticate.isAuthenticated,function(req,res)
 {
     //console.log(req);
-    var image=req.query.profilepic;
+    var image=utilities.getToken(req).username+'.png'; 
     res.sendfile('./image/'+image);
 
 });

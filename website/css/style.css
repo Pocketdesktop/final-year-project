@@ -1,0 +1,151 @@
+@charset "utf-8";
+/* CSS Document */
+
+.a-reset{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+.navbar-default { 
+	background-color: #FFA500
+}
+.navbar-default .navbar-nav>.active>a:hover,.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus { background-color: #FF4500}
+.navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.open>a,.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover,.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus { background-color: #FF8C00}
+.dropdown-menu { background-color: #FF8C00}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { background-color: #FF4500}
+.navbar-default { background-image: none; }
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { background-image: none; }
+.navbar-default { border-color: #FFFFFF}
+.navbar-default .navbar-brand { color: #FFFFFF}
+.navbar-default .navbar-brand:hover { color: #FFFFFF}
+.navbar-default .navbar-nav>li>a { color: #FFFFFF}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus { color: #FFFFFF}
+.navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus { color: #FFFFFF}
+.navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus { color: #FFFFFF}
+.dropdown-menu>li>a { color: #FFFFFF}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { color: #FFFFFF}
+.navbar-default .navbar-nav>.dropdown>a .caret { border-top-color: #999999}
+.navbar-default .navbar-nav>.dropdown>a:hover .caret { border-top-color: #FFFFFF}
+.navbar-default .navbar-nav>.dropdown>a .caret { border-bottom-color: #999999}
+.navbar-default .navbar-nav>.dropdown>a:hover .caret { border-bottom-color: #FFFFFF}
+
+
+.weather-container{
+	margin-bottom: 10px;
+	padding: 10px;
+    border: 1px solid #FF4500;
+	border-radius: 5px;
+	
+	}
+.weather-img{
+	max-width: 100px;
+	max-height: 100px; 
+	overflow: hidden;
+}
+.weather-temperature{
+	font-size: 45px;
+}
+.weather-place{
+	font-size: 30px;
+}
+.weather-day{
+	font-size: 25px;
+}
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.post-container, .profile-container, .question-asked-container,.answers-given-container, .questions-followed-container, .answers-container{
+	margin-bottom: 10px;
+	
+	padding: 10px;
+    border: 1px solid #FF4500;
+	border-radius: 5px;
+	}
+
+.question-asked-container,.answers-given-container, .questions-followed-container{
+	overflow: scroll;
+	max-height: 500px;
+}
+.asked-date, .answered-date{
+	padding: 0;
+	
+}
+
+.highlight
+{
+	font-size: 20px;
+	
+}
+
+.i-want-gap{
+	padding-bottom: 10px;
+}
+
+.i-want-margin{
+	 margin-top:10px;
+}
+
+.article-bar{
+	margin: 20px;
+	padding: 30px;
+	overflow-x: auto;
+	white-space: nowrap;	
+}
+
+.floaters{
+	font-style: italic;
+	text-align: center;
+	margin: 10px;
+	
+	font-size: 40px;
+	max-width: 400px;
+	min-height: 200px;
+	display: inline-block;
+	white-space: normal;
+	overflow: hidden;
+}
+
+.daily{
+	border:2px solid #FF4500;
+	font-size: 20px;
+	text-align: center;
+	margin: 10px;
+	display: inline-block;
+	white-space: normal;
+	overflow: hidden;
+}
+
+.daily-dates:focus {
+	background-color:#FFA500; 
+	}
+.daily-dates:hover {
+	background-color:#FFA500; 
+	}
+.daily-dates:active {
+	background-color:#FFA500; 
+	}
+.sun{
+	border-top: 2px solid #FFA500;
+}
+
+.moon{
+	border-top:2px solid #FF4500;
+}
+.i-want-major-gap{
+	margin-bottom: 200px;
+}
+
+.i-want-minor-gap{
+	margin-bottom: 50px;
+}
+
+
