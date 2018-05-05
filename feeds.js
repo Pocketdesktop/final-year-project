@@ -204,7 +204,7 @@ module.exports = {
         var query = {_id:ObjectId(data.id)};
         var answerid=data.answerid
         db.collection('feeds').update(query,{$pull:{answers:{id:answerid}}});
-        callback(false,{});
+        callback(false,{a:"as"});
     	
     	
 
