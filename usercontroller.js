@@ -6,12 +6,11 @@ var jwt = require('jsonwebtoken');
 var config = require('./config');
 var bcrypt = require('bcrypt');
 var authenticate = require('./authentications');
+var utilities = require('./utilities');
 
 router.use(bodyParser.urlencoded({
     extended: true
 }));
-
-
 
 
 
@@ -21,10 +20,9 @@ router.post('/register', function(req, res) {
         if (err) {
             console.log(err);
             res.json({
-                "register error": "registration unsuccessful"
+                "register": "registration unsuccessful"
             });
         } else {
-
              jwt.sign({
                         username: req.body.username
                     }, config.secretKey, {
@@ -33,6 +31,7 @@ router.post('/register', function(req, res) {
                         console.log(token);
                         console.log(err);
                         res.json({
+                            "username":req.body.username,
                             "token": token
                         });
                     });
@@ -62,29 +61,43 @@ router.get('/userexists', function(req, res) {
 router.post('/login', function(req, res) {
     // console.log(req.body);
     user.getUser(req.body.username, function(err, response) {
+        console.log(req.body);
         console.log(response + "hellohello");
-        if (response) {
+        if(response.verified == 0)
+        {
+            console.log("account not verified");
+             res.json({
+                        "login_error": "account not verfied"
+                    });
+
+        }
+        else if (response) {
             console.log(req.body.password + " " + response.password)
             bcrypt.compare(req.body.password, response.password, function(err, responseBcrypt) {
                 if (responseBcrypt) {
                     // Passwords match
                     console.log("password is correct");
                     jwt.sign({
-                        username: response.username
+                        username: response.username,
+                        role: response.role
                     }, config.secretKey, {
                         algorithm: 'HS256'
                     }, function(err, token) {
-                        console.log(token);
-                        console.log(err);
+                        console.log(response.username);
+                        console.log(response._id);
+                        var id = response._id;
                         res.json({
-                            "token": token
+                            "token": token,
+                            "username": response.username,
+                            "id":id,
+                            "role":response.role
                         });
                     });
                 } else {
 
                     console.log("password is incorrect");
                     res.json({
-                        "login error": "username or password incorrect"
+                        "login_error": "username or password incorrect"
                     });
                     // Passwords don't match
                 }
@@ -93,12 +106,38 @@ router.post('/login', function(req, res) {
             console.log(err);
             console.log("username incorrect");
             res.json({
-                "login error": "username or passwor incorrect"
+                "login_error": "username or passwor incorrect"
             });
         }
     });
 });
 
+router.get('/getuserdata', authenticate.isAuthenticated,function(req,res)
+{
+   user.getUser(req, function(err, response) {
+    res.json(response);
+
+   });
+
+});
+
+router.post('/uploadpic',authenticate.isAuthenticated,function(req,res)
+{
+    //console.log(req);
+    user.uploadPic(req, function(err, response) {
+        res.json(response);
+
+   });
+
+});
+
+router.post('/profilepic',authenticate.isAuthenticated,function(req,res)
+{
+    //console.log(req);
+    var image=utilities.getToken(req).username+'.png'; 
+    res.sendfile('./image/'+image);
+
+});
 
 router.get('/hello', authenticate.isAuthenticated, function(req, res) {
     // console.log(req.body);

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="agriConnect">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>agriConnect</title>
+<!-- Bootstrap -->
+<!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
+<link href="/css/reset.css" rel="stylesheet" type="text/css">
+<link href="/css/bootstrap-3.3.7.css" rel="stylesheet" type="text/css">
+<link href="/css/style.css" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body style="padding-top: 60px;" ng-controller="indexcontroller" >
+
+<!--navigation bar ka code-->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topFixedNavbar1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      <a class="navbar-brand" href="/web/index">agriConnect</a></div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="topFixedNavbar1">
+      <ul class="nav navbar-nav navbar-right">
+		<li><a href="" ng-if="!userdata.username" data-toggle="modal" data-target="#loginregister" >Articles</a><a href="/web/article" ng-if="userdata.username">Articles</a></li><li class="active"><a href="" ng-if="!userdata.username" data-toggle="modal" data-target="#loginregister" >Schemes</a><a href="/web/scheme" ng-if="userdata.username">Scheme</a></li>
+        <li><a href="" ng-if="!userdata.username" data-toggle="modal" data-target="#loginregister">Weather/Forecast</a><a href="/web/weather" ng-if="userdata.username">Weather/Forecast</a></li>
+        <li><a href="" ng-if="userdata.username">{{userdata.username}}</a></li>
+        <li><a href="#loginregister" ng-if="!userdata.username" data-toggle="modal" data-target="#loginregister">LogIn/Register</a> <a href="" ng-if="userdata.username" ng-click="logout();">LogOut</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<div class="container-fluid"> 
+	<div class="form-group">
+  <label for="heading">Heading:</label>
+  <input type="text" class="form-control" id="heading" placeholder="enter heading for the scheme" ng-model="scheme_heading">
+</div>
+	
+		<div class="form-group">
+  <label for="description">Description:</label>
+  <input type="text" class="form-control" id="description" placeholder="enter description for the scheme" ng-model="scheme_description">
+</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="file_upload">File:</label>
+	<input type = "file" file-model="myFile" name="myFile" accept="application/pdf" class="form-control" id="file_upload">
+		</div>
+         
+	
+		<div class="form-group">
+<button type="button" ng-click="uploadFile(myfile);" class="btn btn-lg btn-default">submit</button>  
+</div>
+	
+	
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="/js/jquery-1.11.3.min.js"></script> 
+<script>
+	$(document).ready(function() {
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+});
+	</script> 
+<script>
+	
+	
+	 var app = angular.module('agriConnect', ['ngCookies']);
+	
+	
+	
+	
+	
+	
+	app.directive('fileModel',['$parse',function($parse){
+		return {
+			restrict:'A',
+			link:function(scope,element,attrs){
+				var model=$parse(attrs.fileModel);
+				var modelSetter=model.assign;
+				element.bind('change',function(){
+					scope.$apply(function(){
+						modelSetter(scope,element[0].files[0]);
+					});
+				});
+			}
+		}
+	}]);
+	
+	
+	app.controller('indexcontroller', function ($scope,$http,$cookies,$timeout,$window){
+		
+		
+		//check karega ki pehle se login hai ya nahi
+		if($cookies.get("sessionuserid"))
+			{
+				$scope.userdata={};
+				 $scope.userdata.username=$cookies.get("sessionuser");
+				 $scope.userdata.userid=$cookies.get("sessionuserid");
+			}
+		else{
+			$window.location.href = '/web/index';
+		}
+		
+		
+		
+		//ye function file ko upload karega
+		 $scope.uploadFile = function(myfiles){
+			 var formData=new FormData();
+			// var myFile=$scope.myFile;
+			 
+			 //console.log($scope.scheme_heading);
+			// console.log(myfiles);
+			// console.log($scope.myFile);
+			 formData.append("file",$scope.myFile); //myFile.files[0] will take the file and append 	in formData since the name is myFile.
+			 formData.append("scheme_heading",$scope.scheme_heading);
+			 formData.append("scheme_description",$scope.scheme_description);
+			 var token = "bearer "+$cookies.get("sessiontoken");
+			 $http({
+				 method: 'POST',
+				 url: '/scheme/uploadpdf', // The URL to Post.
+				 headers: {'authorization':token,'Content-Type': undefined}, // Set the Content-Type to undefined always.
+				 data: formData,
+				 transformRequest: angular.identity,
+				 
+				 //function(data, headersGetterFunction) {
+					// 	return data;
+				 //}
+			 }).then(function(data) { 
+				 
+				 if(data.data.error)
+					 {
+						 $window.alert(data.data.error);
+					 }
+				 console.log(data.data.error);
+			 })
+		 },
+		
+		
+			//logout karne wala function hai ye
+				 $scope.logout=function()
+				 {
+					console.log("im here");
+					$cookies.remove("sessiontoken"); 
+					$cookies.remove("sessionuser"); 
+					$cookies.remove("sessionuserid");
+			        $scope.userdata={};
+					$window.location.href = '/web/index';
+			
+				 },
+					 
+					 
+					 //ye function data utha raha hai editor se aur heading utha raha hai
+					 $scope.func=function(){
+					 var token = "bearer "+$cookies.get("sessiontoken");
+					 var htmlcontent = $scope.htmlVariable;
+					 var articleheading = $scope.article_heading;
+					 console.log($scope.htmlVariable);
+					 console.log($scope.article_heading);
+					  $http({
+							method:"POST",
+							url:"/article/addarticle",
+							data:{'heading':articleheading,'htmlcontent':htmlcontent},	
+		 					headers: {'authorization':token,'Content-Type':'application/json'}
+					  		}).then(function(response){
+						  console.log(response);  
+					  }); 
+					 
+				 }
+					 
+					 
+					
+			
+			
+			
+	//ye mat hatana controller ka hai		
+		}
+		)
+	</script> 
+
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<!-- <script src="js/bootstrap.js"></script> --> 
+<script src="/js/bootstrap-3.3.7.js"></script>
+</body>
+</html>

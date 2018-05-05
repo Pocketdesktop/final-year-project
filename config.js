@@ -7,8 +7,12 @@ module.exports = {
 	"database":"",
 	"dbUsername":"agriconnectagnishardul",
 	"dbPassword":"finalyearproject",
-	"port":process.env.PORT || 3000,
-	"secretKey":"agriconnectsecret"
+	"port":process.env.PORT || 3001,
+	"secretKey":"agriconnectsecret",
+	"weatherapikey":"e214053af9b8f6e54b3c68c19e0aef00",
+	"weatherbaseurl":"http://api.openweathermap.org/data/2.5/weather?",
+	"hourlybaseurl":"http://api.openweathermap.org/data/2.5/forecast?"
+
 }
 
 

@@ -4,12 +4,60 @@
 		"selected_items":
 		[
 			[
-				"res",
-				"result"
+				"ht",
+				"htmlDecode"
 			],
 			[
 				"in",
-				"instance"
+				"innerHTML"
+			],
+			[
+				"foll",
+				"followed_by"
+			],
+			[
+				"fool",
+				"follow_count"
+			],
+			[
+				"re",
+				"reply"
+			],
+			[
+				"no",
+				"notification"
+			],
+			[
+				"t",
+				"true"
+			],
+			[
+				"fo",
+				"follow"
+			],
+			[
+				"qy",
+				"queryFollow"
+			],
+			[
+				"not",
+				"notification"
+			],
+			[
+				"ti",
+				"time"
+			],
+			[
+				"n",
+				"notification"
+			],
+			[
+				"p",
+				"push"
+			],
+			[
+				"res",
+				"result"
 			],
 			[
 				"sta",
@@ -18,10 +66,6 @@
 			[
 				"hobby_",
 				"hobby_obj"
-			],
-			[
-				"re",
-				"require"
 			],
 			[
 				"Au",
@@ -132,10 +176,6 @@
 				"pubKeyObj"
 			],
 			[
-				"ti",
-				"timezone"
-			],
-			[
 				"e",
 				"entry"
 			],
@@ -172,10 +212,6 @@
 				"send_sms"
 			],
 			[
-				"n",
-				"Number"
-			],
-			[
 				"cs",
 				"csrf_exempt"
 			],
@@ -208,48 +244,89 @@
 	"buffers":
 	[
 		{
-			"file": "feeds.js",
+			"file": "website/profile.html",
 			"settings":
 			{
-				"buffer_size": 3894,
+				"buffer_size": 6781,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "package com.agreeconnect.pojo;\n\nimport java.util.HashMap;\nimport java.util.Map;\n\n/**\n * Created by h p on 3/6/2018.\n */\n\npublic class Answer {\n\n\tprivate String answer;\n\tprivate String answerBy;\n\tprivate String answerTime;\n\tprivate String answerUpvote;\n\tprivate String answerStatus;\n\tprivate Integer replyCount;\n\n\n\n\n\tpublic String getAnswer() {\n\t\treturn answer;\n\t}\n\n\tpublic void setAnswer(String answer) {\n\t\tthis.answer = answer;\n\t}\n\n\tpublic String getAnswerBy() {\n\t\treturn answerBy;\n\t}\n\n\tpublic void setAnswerBy(String answerBy) {\n\t\tthis.answerBy = answerBy;\n\t}\n\n\tpublic String getAnswerTime() {\n\t\treturn answerTime;\n\t}\n\n\tpublic void setAnswerTime(String answerTime) {\n\t\tthis.answerTime = answerTime;\n\t}\n\n\tpublic String getAnswerUpvote() {\n\t\treturn answerUpvote;\n\t}\n\n\tpublic void setAnswerUpvote(String answerUpvote) {\n\t\tthis.answerUpvote = answerUpvote;\n\t}\n\n\tpublic String getAnswerStatus() {\n\t\treturn answerStatus;\n\t}\n\n\tpublic void setAnswerStatus(String answerStatus) {\n\t\tthis.answerStatus = answerStatus;\n\t}\n\n\tpublic Integer getReplyCount() {\n\t\treturn replyCount;\n\t}\n\n\tpublic void setReplyCount(Integer replyCount) {\n\t\tthis.replyCount = replyCount;\n\t}\n\n\n\tpublic Map<String, Object> getAdditionalProperties() {\n\t\treturn this.additionalProperties;\n\t}\n\n\tpublic void setAdditionalProperty(String name, Object value) {\n\t\tthis.additionalProperties.put(name, value);\n\t}\n\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
-			"file": "/C/Users/h p/Desktop/AgreeConnect/app/src/main/java/com/agreeconnect/pojo/Answer.java",
-			"file_size": 1719,
-			"file_write_time": 131648313894136065,
+			"file": "website/questions.html",
 			"settings":
 			{
-				"buffer_size": 1412,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "reply.js",
-			"settings":
-			{
-				"buffer_size": 3086,
+				"buffer_size": 12800,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "replyController.js",
+			"file": "/C/Users/h p/Downloads/Date-Wise-Prices-all-Commodity.xml",
 			"settings":
 			{
-				"buffer_size": 2249,
+				"buffer_size": 2790756,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "website/scheme.html",
+			"settings":
+			{
+				"buffer_size": 5849,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "feedscontroller.js",
+			"file": "website/test.html",
 			"settings":
 			{
-				"buffer_size": 2603,
+				"buffer_size": 9414,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "website/test - Copy.html",
+			"settings":
+			{
+				"buffer_size": 764,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "website/textangular.html",
+			"settings":
+			{
+				"buffer_size": 4354,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "website/weather.html",
+			"settings":
+			{
+				"buffer_size": 6906,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "htmlreander.js",
+			"settings":
+			{
+				"buffer_size": 1525,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "website/index.html",
+			"settings":
+			{
+				"buffer_size": 16306,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -299,10 +376,44 @@
 	},
 	"expanded_folders":
 	[
-		"/F/final-year-project/final-year-project"
+		"/F/final-year-project/final-year-project",
+		"/F/final-year-project/final-year-project/final-year-project",
+		"/F/final-year-project/final-year-project/final-year-project/website"
 	],
 	"file_history":
 	[
+		"/F/final-year-project/final-year-project/final-year-project/website/addarticle.html",
+		"/F/final-year-project/final-year-project/final-year-project/website/index.html",
+		"/F/final-year-project/final-year-project/final-year-project/website/article.html",
+		"/F/final-year-project/final-year-project/final-year-project/website/addscheme.html",
+		"/F/final-year-project/final-year-project/final-year-project/website/profile.css",
+		"/F/final-year-project/final-year-project/final-year-project/usercontroller.js",
+		"/F/final-year-project/final-year-project/final-year-project/reply.js",
+		"/F/final-year-project/final-year-project/final-year-project/user.js",
+		"/F/final-year-project/final-year-project/final-year-project/scheme.js",
+		"/D/profile.html",
+		"/F/final-year-project/final-year-project/final-year-project/feeds.js",
+		"/F/final-year-project/final-year-project/final-year-project/feedscontroller.js",
+		"/F/final-year-project/final-year-project/final-year-project/followcontroller.js",
+		"/F/final-year-project/final-year-project/final-year-project/htmlreander.js",
+		"/F/final-year-project/final-year-project/final-year-project/notification.js",
+		"/F/final-year-project/final-year-project/final-year-project/notificationcontroller.js",
+		"/F/final-year-project/final-year-project/final-year-project/index.js",
+		"/F/final-year-project/final-year-project/final-year-project/follow.js",
+		"/F/final-year-project/final-year-project/final-year-project/article.js",
+		"/F/final-year-project/final-year-project/final-year-project/asdf.html",
+		"/F/final-year-project/final-year-project/final-year-project/feeds.json",
+		"/C/Users/h p/Desktop/projects/saveIt/saveit-server/merchant/serializers.py",
+		"/F/imp doc/cvagnivesh.pdf.pptx",
+		"/F/final-year-project/New folder/final-year-project/feedscontroller.js",
+		"/F/final-year-project/New folder/final-year-project/followcontroller.js",
+		"/C/Users/h p/Desktop/projects/project/Shivendra_Countries/Countres/app/src/main/java/com/countres/com/countres/Countres_list.java",
+		"/G/padhai/code/projects/LOGAN/posts/templates/myprofile.html",
+		"/G/Watch Baby Driver 2017 Online - Free Movies.en.srt",
+		"/F/final-year-project/New folder/final-year-project/feeds.js",
+		"/G/padhai/code/projects/Logout/hybrid_login/views.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/saveIt/settings.py",
+		"/C/Users/h p/Desktop/saveIt/saveit-server/saveIt/urls.py",
 		"/C/Users/h p/Downloads/trialscript.html",
 		"/C/Users/h p/Desktop/saveIt/saveit-server/db.json",
 		"/C/Users/h p/Desktop/project/Logout/LOGAN/logan.pem",
@@ -315,7 +426,6 @@
 		"/C/Users/h p/Downloads/Logout/posts/models.py",
 		"/G/padhai/code/projects/Logout/searcht/views.py",
 		"/G/padhai/code/projects/Logout/LOGAN/settings.py",
-		"/C/Users/h p/Desktop/saveIt/saveit-server/saveIt/settings.py",
 		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/views.py",
 		"/C/Users/h p/Desktop/saveIt/saveit-server/user/models.py",
 		"/C/Users/h p/Downloads/Logout/posts/templates/posts/index.html",
@@ -324,7 +434,6 @@
 		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/middleware.py",
 		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/api.py",
 		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/urls.py",
-		"/C/Users/h p/Desktop/saveIt/saveit-server/saveIt/urls.py",
 		"/C/Users/h p/Desktop/saveIt/saveit-server/merchant/forms.py",
 		"/C/Users/h p/Desktop/saveIt/saveit-server/user/urls.py",
 		"/C/Users/h p/Desktop/saveIt/saveit-server/user/serializers.py",
@@ -400,26 +509,11 @@
 		"/media/kenway/New Volume/offline_payments_server_version_2/offline_payments/settings.py",
 		"/home/kenway/offline_payments/offline_payments/settings.py",
 		"/home/kenway/Desktop/textlocal.py",
-		"/home/kenway/offline_payments/api/views.py",
-		"/home/kenway/offline_payments/api/admin.py",
-		"/home/kenway/offline_payments/api/urls.py",
-		"/home/kenway/tlp-indicator.py",
-		"/home/kenway/Desktop/rsa.py",
-		"/home/kenway/offline_payments/api/models.py",
-		"/home/kenway/offline_payments/offline_payments/wsgi.py",
-		"/home/kenway/offline_payments/offline_payments/urls.py",
-		"/home/kenway/Desktop/ydl.py",
-		"/media/kenway/New Volume/Shivendra/RetailBankingManagement/account_executive/models.py",
-		"/media/kenway/New Volume/Shivendra/alumni_web/rl/views.py",
-		"/media/kenway/New Volume/Shivendra/MyHolidayNetwork/rl/views.py",
-		"/media/kenway/New Volume/Shivendra/MyHolidayNetwork/MyHolidayNetwork/settings.py",
-		"/home/kenway/cpclips/downloader/models.py",
-		"/media/kenway/New Volume/Shivendra/RetailBankingManagement/RetailBankingManagement/urls.py",
-		"/home/kenway/cpclips_new/downloader/views.py"
+		"/home/kenway/offline_payments/api/views.py"
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 45.0
 	},
 	"find_in_files":
 	{
@@ -433,6 +527,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			":\"/",
+			"http://localhost:3001",
+			"html",
+			"http://localhost:3001",
+			"html",
+			"http://localhost:3001",
+			"html",
+			"http://localhost:3001",
+			"html",
+			"http://localhost:3001",
+			"index",
+			"css",
+			"file",
+			"followed_by",
+			"var"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -456,83 +565,257 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "feeds.js",
+					"file": "website/profile.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3894,
+						"buffer_size": 6781,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3133,
-								3133
+								6733,
+								6733
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2208.0,
+						"translation.y": 3584.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "website/questions.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12800,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17,
+								21
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 4920.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "/C/Users/h p/Desktop/AgreeConnect/app/src/main/java/com/agreeconnect/pojo/Answer.java",
+					"buffer": 2,
+					"file": "/C/Users/h p/Downloads/Date-Wise-Prices-all-Commodity.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1412,
+						"buffer_size": 2790756,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								619,
-								619
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/XML/XML.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 815.0,
+						"translation.y": 4800.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "reply.js",
+					"buffer": 3,
+					"file": "website/scheme.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3086,
+						"buffer_size": 5849,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1413,
-								1413
+								999,
+								1003
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "website/test.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9414,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "website/test - Copy.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 764,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "website/textangular.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4354,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4243,
+								4247
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "website/weather.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6906,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "htmlreander.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1525,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1006,
+								1006
 							]
 						],
 						"settings":
@@ -542,70 +825,38 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 675.0,
+						"translation.y": 840.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "replyController.js",
+					"buffer": 9,
+					"file": "website/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2249,
+						"buffer_size": 16306,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1612,
-								1612
+								14882,
+								14882
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 891.0,
+						"translation.y": 10320.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "feedscontroller.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2603,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1942,
-								1942
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 775.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -613,7 +864,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 30.0
+		"height": 32.0
 	},
 	"input":
 	{
@@ -658,7 +909,7 @@
 	"project": "",
 	"replace":
 	{
-		"height": 56.0
+		"height": 60.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -696,7 +947,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 268.0,
+	"side_bar_width": 217.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

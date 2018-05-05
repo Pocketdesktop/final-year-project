@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="agriConnect">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>agriConnect</title>
+<!-- Bootstrap -->
+<!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
+<link href="/css/reset.css" rel="stylesheet" type="text/css">
+<link href="/css/bootstrap-3.3.7.css" rel="stylesheet" type="text/css">
+<link href="/css/style.css" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body style="padding-top: 60px;" ng-controller="indexcontroller" >
+
+<!--navigation bar ka code-->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topFixedNavbar1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      <a class="navbar-brand" href="/web/index">agriConnect</a></div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="topFixedNavbar1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="" ng-if="!userdata.username" data-toggle="modal" data-target="#loginregister" >Articles</a><a href="/web/article" ng-if="userdata.username">Articles</a></li>
+        <li><a href="" ng-if="!userdata.username" data-toggle="modal" data-target="#loginregister" >Schemes</a><a href="/web/scheme" ng-if="userdata.username">Scheme</a></li>
+        <li><a href="" ng-if="!userdata.username" data-toggle="modal" data-target="#loginregister">Weather/Forecast</a><a href="/web/weather" ng-if="userdata.username">Weather/Forecast</a></li>
+        <li><a href="" ng-if="userdata.username">{{userdata.username}}</a></li>
+        <li><a href="#loginregister" ng-if="!userdata.username" data-toggle="modal" data-target="#loginregister">LogIn/Register</a> <a href="" ng-if="userdata.username" ng-click="logout();">LogOut</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+
+<!-- article wale ka code 
+<div class="container-fluid article-bar" >
+	<span ng-repeat="data in data_article">
+    <div class="container-fluid floaters text-capitalize post-container" ng-click=gotoarticle() >{{data.heading}}</div>
+		</span>
+    <div class="container-fluid floaters text-capitalize" ng-click="" style="background-image: url(images/img_6.jpg)">ARCHIVES</div>	 	
+</div>
+--> 
+
+<!-- scheme wale ka code
+<div class="container-fluid article-bar" >
+	<span ng-repeat="data in data_scheme">
+    <div class="container-fluid floaters text-capitalize"  ng-style="{'background-image': 'url(/images/img_6.jpg)'}">{{data.heading}}</div>
+		</span>
+    <div class="container-fluid floaters text-capitalize" style="background-image: url(images/img_6.jpg)">ARCHIVES</div>	 	
+</div>--> 
+
+<!-- weather wale ka n all ka code -->
+	
+	
+	
+	
+	
+	
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-4"> <a href="/web/weather" class="a-reset" >
+      <div class="container-fluid weather-container"  ng-init="getweather();">
+        <div class="container-fluid text-center"> <span class="weather-place">{{weather.place}}, {{weather.country}}</span> </div>
+        <div class="conatiner-fluid text-center"> <span class="weather-day">{{weather.datetime|date:'medium'}}</span></div>
+        <div class="row">
+          <div class="col-xs-2 weather-img"><img ng-src="{{weather.icon}}" class="img-circle img-responsive" alt="Placeholder image"></div>
+          <div class="col-xs-4"><span class="weather-temperature">{{weather.temprature}}</span>&#8451;</div>
+          <div class="col-xs-6">
+            <div class="container-fluid">precipitation: {{weather.precipitation}}%</div>
+            <div class="container-fluid">wind: {{weather.wind}}km/hr</div>
+            <div class="container-fluid">humidity: {{weather.humidity}}%</div>
+          </div>
+        </div>
+      </div>
+      </a> </div>
+	  
+    <div class="col-sm-12 col-md-5">
+      <div class="row post-container" ng-repeat="data in posts">
+        <div class="col-xs-3">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <div class="container-fluid">{{data.follow_count}}</div>
+              <div class="container-fluid">followers</div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="container-fluid" ng-if="!data.answersnumber">1</div>
+              <div class="container-fluid" ng-if="data.answersnumber">{{data.answersnumber}}</div>
+              <div class="container-fluid">answers</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="container-fluid" style="word-break: break-all"><a href="/web/questions?queryid={{data._id}}">{{data.query}}</a></div>
+          <div class="container-fluid" >
+            <button type="button" ng-repeat="tags in data.tags" class="btn btn-sm btn-default">{{tags}}</button>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="container asked-date">{{data.time | date:medium}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="hidden-xs hidden-sm col-md-3"><!--yahan pe sab add aur tags aur na jaane kya kya aaega--></div>
+  </div>
+</div>
+<button class="btn btn-primary btn-lg back-to-top" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></button>
+
+<!--login aur registeration wale modal ka code-->
+
+<div class="modal" id="loginregister" tabindex="-1" role="dialog" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div>
+        <ul id="modaltab" class="nav nav-tabs">
+          <li class="active"><a href="#login" data-toggle="tab">Log In</a></li>
+          <li class=""><a href="#register" data-toggle="tab">Register</a></li>
+        </ul>
+      </div>
+      <div class="modal-body">
+        <div id="TabContent" class="tab-content">
+          <div class="tab-pane fade active in" id="login">
+            <form id="loginform" ng-init="login={}" ng-submit="loginsubmit(login)" >
+              <div class="form-group">
+                <label for="username">Username : </label>
+                <input id="usernamelogin" ng-model="login.username" value="" type="text" required class="form-control" name="username" placeholder="Username" autocomplete="off">
+              </div>
+              <div class="form-group">
+                <label for="password">Password : </label>
+                <input id="passwordlogin" ng-model="login.password" type="password" class="form-control" required name="password" placeholder="Password" autocomplete="off">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-sm btn-default">Log In</button>
+              </div>
+            </form>
+          </div>
+          <div class="tab-pane fade in" id="register">
+            <form id="registerform" ng-init="register={}" ng-submit="registersubmit(register)" >
+              <div class="form-group">
+                <label for="username">Username : </label>
+                <span>{{taken}}</span>
+                <input id="username" ng-change="userexists(register.username);" type="text" ng-model="register.username" required class="form-control" name="username" placeholder="Username">
+              </div>
+              <div class="form-group">
+                <label for="password">Password : </label>
+                <input id="password" type="password" class="form-control" ng-model="register.password" required name="password" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="firstname">First Name : </label>
+                <input id="firstname" type="text" class="form-control" ng-model="register.firstname" required name="firstname" placeholder="First Name">
+              </div>
+              <div class="form-group">
+                <label for="lastname">Last Name : </label>
+                <input id="lastname" type="text" class="form-control" required ng-model="register.lastname" name="lastname" placeholder="Last Name">
+              </div>
+              <div class="form-group">
+                <label for="mobile">Mobile : </label>
+                <input id="mobile" type="tel" ng-model="register.mobile" class="form-control" required name="mobile" placeholder="Mobile">
+              </div>
+              <div class="form-group">
+                <label for="email">Email : </label>
+                <input id="email" type="email" ng-model="register.email" class="form-control" required name="email" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="role">Role : </label>
+                <select class="form-control" id="role" ng-model="register.role" required >
+                  <option>Farmer</option>
+                  <option>Scientist</option>
+                  <option>Government Body</option>
+                  <option>Industrial Body</option>
+                </select>
+              </div>
+              <div class="form-group"> 
+                <!-- <div class="g-recaptcha" data-sitekey="6LfBbFAUAAAAANGUZeDEwK2CQ7PQAO-fFEwtlM-4"></div>
+--> 
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-sm btn-default">Register</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="/js/jquery-1.11.3.min.js"></script> 
+<script>
+	$(document).ready(function() {
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+});
+	</script> 
+<script>
+	
+	 var app = angular.module('agriConnect', ['ngCookies']);
+	
+	app.controller('indexcontroller', function ($scope,$http,$cookies,$timeout,$window){
+		
+		
+		//check karega ki pehle se login hai ya nahi
+		if($cookies.get("sessionuserid"))
+			{
+				$scope.userdata={};
+				 $scope.userdata.username=$cookies.get("sessionuser");
+				 $scope.userdata.userid=$cookies.get("sessionuserid");
+			}
+		
+		//ye posts ki heading aur sab leke aaega
+		$http({
+		method:"GET",
+		url:"/query/getallposts",
+		
+		 headers: {'Content-Type':'application/json'}
+
+	}).then(function(response){
+		console.log(response.data['all posts'][0]);	
+			$scope.posts=response.data['all posts'];
+			console.log($scope.posts);
+			     
+ }
+		
+	);
+		
+		
+		
+		
+		
+		//ye articles ki heading leke aaega
+		var token = "bearer "+$cookies.get("sessiontoken");
+ $http({
+		method:"POST",
+		url:"/article/getallarticle",
+		data:{"limit":"5"},
+		
+		 headers: {'authorization':token,'Content-Type':'application/json'}
+
+	}).then(function(response){
+	 	$scope.data_article=response.data;
+		//console.log(response.data);	
+			     
+ }
+		
+	);
+		//login karane wala funciton
+		$scope.loginsubmit=function(login){
+			
+			var username=login.username;
+			var password=login.password;
+			
+			var obj={'username':username,'password':password};
+			//console.log(obj);
+			
+			 $http({
+		method:"POST",
+		url:"/user/login",
+		data:obj,
+		
+		 headers: {'Content-Type':'application/json'}
+
+	}).then(function(response){
+
+		console.log(response.data);	
+				 if(response.data.login_error)
+					 {
+						 $window.alert(response.data.login_error);
+					 }
+				 else{
+			     $cookies.put("sessiontoken", response.data.token); 
+				 $cookies.put("sessionuser",response.data.username);
+				 $cookies.put("sessionuserid",response.data.id);
+					 $cookies.put("sessionrole",response.data.role);
+				 $scope.userdata={};
+				 $scope.userdata.username=$cookies.get("sessionuser");
+				 $scope.userdata.userid=$cookies.get("sessionuserid");
+				 }
+				 $("#loginregister").modal('hide');
+				 }
+		
+	)},
+			
+			
+			//register karane wala function
+			$scope.registersubmit=function(register){
+			
+			var username=register.username;
+			var password=register.password;
+			var firstname = register.firstname;
+			var lastname = register.lastname;
+			var mobile = register.mobile;
+			var role = register.role;
+		
+			
+			var obj={'username':username,'password':password,'firstname':firstname,'lastname':lastname,'mobile':mobile,'role':role};
+			//console.log(obj);
+			 $http({
+		method:"POST",
+		url:"/user/register",
+		data:obj,
+		
+		 headers: {'Content-Type':'application/json'}
+
+	}).then(function(response){
+
+		//console.log(response.data);	
+				 if(response.data.register)
+					 {
+				 var msg = response.data.register;
+			     alert(msg);
+					 }
+				 else
+					 {
+						 	if(role == "Farmer")
+				{
+					 $cookies.put("sessiontoken", response.data.token); 
+				 $cookies.put("sessionuser",response.data.username);
+			
+						 
+				 
+				 $scope.userdata={};
+				 $scope.userdata.username=$cookies.get("sessionuser");
+				}
+			else{
+				$window.alert("as you have selected non-farmer as your role, your account will be activated after it is verified");
+				
+			} 
+				 
+					 }
+				 $("#loginregister").modal('hide');
+				 }
+		
+	)},
+			
+			//logout karne wala function hai ye
+				 $scope.logout=function()
+				 {
+		//	console.log("im here");
+					$cookies.remove("sessiontoken"); 
+					$cookies.remove("sessionuser"); 
+					$cookies.remove("sessionuserid");
+			        $scope.userdata={};
+			
+				 },
+			
+			
+			//check kar raha hai ki username already taken hai ya nahi
+			$scope.userexists=function(username){
+		//	console.log(username);
+			$http({
+				method:"GET",
+				url:"/user/userexists?test="+username,
+			}).then(function(response){
+				
+				
+				$scope.taken=response.data.userExists;
+			//	console.log(response.data.userExists);
+			})
+			
+		},
+			
+			//ye function weather leke aaega
+			$scope.getweather=function(){
+			$scope.getlocation();
+			var lat = $cookies.get("lat");
+			var lon = $cookies.get("lon");
+			
+			var obj = {"type":"2","degreetype":"2","lat":lat,"lon":lon};
+			
+			$http({
+				method:"POST",
+				data:obj,
+				url:"/weather/getweather",
+				headers: {'Content-Type':'application/json'}
+			}).then(function(response){
+				console.log(angular.fromJson(response.data));
+				var newdata=angular.fromJson(response.data);
+				$scope.weather={};
+				$scope.weather.place = newdata.name;
+				//console.log(newdata.name);
+				$scope.weather.country = newdata.sys.country;
+				$scope.weather.datetime = Date.now(); //date | date:'yyyy-MM-dd 
+				$scope.weather.temprature = newdata.main.temp;
+				$scope.weather.precipitation = "--"
+				$scope.weather.wind = newdata.wind.speed;
+				$scope.weather.humidity = newdata.main.humidity;
+				$scope.weather.icon = "http://openweathermap.org/img/w/"+newdata.weather[0].icon+".png";
+				//console.log($scope.weather.icon);
+			})
+			
+			
+			
+			
+			
+		}, 
+			
+			
+			// ye function coordinaes leke aaega
+			$scope.getlocation = function(){
+			
+			 if (navigator.geolocation) {
+			//	 console.log("if ke andar");
+    navigator.geolocation.getCurrentPosition(function(position){
+      $scope.$apply(function(){
+		//  console.log("ddiu");
+        $scope.position = position;
+		//  console.log("position = "+position);
+		  $cookies.put("lat",position.coords.latitude);
+		  $cookies.put("lon",position.coords.longitude);
+      });
+    });
+				 
+  }
+
+			}
+			
+			
+	//ye mat hatana controller ka hai		
+		}
+		)
+	</script> 
+
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<!-- <script src="js/bootstrap.js"></script> --> 
+<script src="/js/bootstrap-3.3.7.js"></script>
+</body>
+</html>

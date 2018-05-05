@@ -5,6 +5,7 @@ var feeds = require('./feeds');
 var jwt = require('jsonwebtoken');
 var config = require('./config');
 var authentication = require('./authentications');
+var utilities = require('./utilities');
 
 
 router.use(bodyParser.urlencoded({
@@ -34,16 +35,122 @@ router.post('/addquery',authentication.isAuthenticated,function(req, res) {
 router.get('/getallpost',authentication.isAuthenticated, function(req,res){
     console.log(req.body);
     feeds.getAllPost(function(result){
-            res.json({"all posts":result});
+            //res.json({"all posts":result});
+            console.log(result)
+            var user = utilities.getToken(req).username
+            var data=[]
+            for(var i=0;i<result.length;i++)
+            {
+                if (result[i].followed_by.includes(user))
+                   result[i].follow=true;
+                else
+                    result[i].follow=false;
+                result[i].follow_count=result[i].followed_by.length
+                result[i].answer_count=result[i].answers.length;
+                result[i].reply_count=result[i].reply.length;
+                delete result[i].answers;
+                delete result[i].reply;
+
+            }
+           res.json({"all posts":result}); 
     });
 });
 
 
+router.get('/getallposts',function(req,res){
+    console.log(req.body);
+    feeds.getAllPost(function(result){
+            //res.json({"all posts":result});
+            
+            var data=[]
+            for(var i=0;i<result.length;i++)
+            {
+               
+                result[i].follow_count=result[i].followed_by.length;
+                result[i].answer_count=result[i].answers.length;
+                result[i].reply_count=result[i].reply.length;
+                delete result[i].answers;
+                delete result[i].reply;
+
+            }
+           res.json({"all posts":result}); 
+    });
+});
+
+router.get('/userallpost',authentication.isAuthenticated, function(req,res){
+    console.log(req.body);
+    feeds.userAllPost(req,function(result){
+            //res.json({"all posts":result});
+            console.log(result)
+            var user = utilities.getToken(req).username
+            var data=[]
+            for(var i=0;i<result.length;i++)
+            {
+                if (result[i].followed_by.includes(user))
+                   result[i].follow=true;
+                else
+                    result[i].follow=false;
+                result[i].follow_count=result[i].followed_by.length
+                result[i].answer_count=result[i].answers.length;
+                result[i].reply_count=result[i].reply.length;
+                delete result[i].answers;
+                delete result[i].reply;
+
+            }
+           res.json({"all posts":result}); 
+    });
+});
+
+
+router.get('/userallanswer',authentication.isAuthenticated, function(req,res){
+    console.log(req.body);
+    feeds.userAllAnswer(req,function(result){
+            //res.json({"all posts":result});
+           var user = utilities.getToken(req).username
+
+            for(var i=0;i<result.length;i++)
+             {
+                for(var j=0;j<result[i].answers.length;j++)
+                {
+                if (result[i].answers[j].upvotes_by.includes(user))
+                   result[i].answers[j].follow=true;
+                else
+                    result[i].answers[j].follow=false;
+                result[i].answers[j].follow_count=result[i].answers[j].upvotes_by.length
+                
+                console.log(i+" "+j);
+                }
+            }
+            
+            
+           res.json({"all posts":result}); 
+    });
+});
+
+
+router.post('/getpostdetail', function(req,res){
+    console.log(req.body);
+    feeds.getAllPostDetail(req,function(err,result){
+            var user = utilities.getToken(req).username;
+            for(var i=0;i<result.answers.length;i++)
+             {
+                if (result.answers[i].upvotes_by.includes(user))
+                   result.answers[i].follow=true;
+                else
+                    result.answers[i].follow=false;
+                result.answers[i].follow_count=result.answers[i].upvotes_by.length
+
+            }
+
+            res.json({"all posts":result,succes:true});
+
+    });
+});
+
 router.post('/deletequery',authentication.isAuthenticated,function(req,res){
     console.log(req.body);
-    var decoded = getToken(req);
     
-    feeds.deleteQuery(req.body,decoded,function(err,result){
+    feeds.deleteQuery(req,function(err,result){
         if(err)
         {
             res.json({"delete query error":"unable to delete the query at this moment"});
@@ -60,17 +167,14 @@ router.post('/deletequery',authentication.isAuthenticated,function(req,res){
 
 router.post('/addanswer',authentication.isAuthenticated,function(req,res){
    // console.log(req.body);
-    var decoded = getToken(req);
     feeds.addAnswer(req,function(err,result)
     {
         if(err)
         {
-            res.json({"add answer error":"unable to add answer at this moment",
-                        "result":result});
+            res.json({"add answer error":"unable to add answer at this moment"});
         }
         else{
-            res.json({"add answer":"answer added successfully",
-                    "result":result});
+            res.json({"add answer":"answer added successfully"});
         }
     });
 });
@@ -78,12 +182,10 @@ router.post('/addanswer',authentication.isAuthenticated,function(req,res){
 
 router.post('/deleteanswer',authentication.isAuthenticated,function(req,res){
     console.log(req.body);
-    var decoded = getToken(req);
     feeds.deleteAnswer(req.body,function(err,result){
         if(err)
         {
-            res.json({"delete answer error":"unable to delete the answer at this moment",
-                        "result":result});
+            res.json({"delete answer error":"unable to delete the answer at this moment"});
         }
         else
         {
@@ -95,11 +197,6 @@ router.post('/deleteanswer',authentication.isAuthenticated,function(req,res){
 });
 
 
-function getToken(data)
-{
-    var temp = data.headers.authorization.replace('bearer ', '');
-    return jwt.decode(temp);
-}
 
 
 module.exports = router;

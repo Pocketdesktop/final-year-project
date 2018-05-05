@@ -13,7 +13,7 @@ router.use(bodyParser.urlencoded({
 }));
 
 
-router.post('/queryreply', function(req, res) {
+router.post('/queryreply',authenticate.isAuthenticated, function(req, res) {
     //console.log(req.body);
     reply.addQueryReply(req, function(err, result) {
         if (err) {
@@ -30,7 +30,25 @@ router.post('/queryreply', function(req, res) {
     });
 });
 
-router.post('/queryreplydelete', function(req, res) {
+
+router.post('/getqueryreply', function(req, res) {
+    //console.log(req.body);
+    reply.getQueryReply(req, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.json({
+                "sucess": false
+            });
+        } else {
+            res.json({
+                "sucess":true,
+                "reply_list": result
+            });
+        }
+    });
+});
+
+router.post('/queryreplydelete',authenticate.isAuthenticated, function(req, res) {
     //console.log(req.body);
     reply.deleteQueryReply(req, function(err, result) {
         if (err) {
@@ -48,8 +66,8 @@ router.post('/queryreplydelete', function(req, res) {
 
 
 
-router.post('/asnwerreply', function(req, res) {
-    console.log(req.body);
+router.post('/answerreply',authenticate.isAuthenticated, function(req, res) {
+    //console.log(req.body);
     reply.addAnswerReply(req, function(err, result) {
         if (err) {
             console.log(err);
@@ -66,17 +84,34 @@ router.post('/asnwerreply', function(req, res) {
 });
 
 
-router.post('/asnwerreplydelete', function(req, res) {
+router.post('/getanswerreply', function(req, res) {
+    //console.log(req.body);
+    reply.getAnswerReply(req, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.json({
+                "sucess": false
+            });
+        } else {
+            res.json({
+                "sucess":true,
+                "reply_list": result
+            });
+        }
+    });
+});
+
+router.post('/answerreplydelete',authenticate.isAuthenticated, function(req, res) {
     console.log(req.body);
     reply.deleteAnswerReply(req, function(err, result) {
         if (err) {
             console.log(err);
             res.json({
-                "answer reply delete error": "registration unsuccessful"
+                "answer reply delete error": "unsuccessful"
             });
         } else {
             res.json({
-                "answer reply delete": "registration successful"
+                "answer reply delete": "successful"
             });
         }
     });
@@ -85,11 +120,6 @@ router.post('/asnwerreplydelete', function(req, res) {
 
 
 
-function getToken(data)
-{
-    var temp = data.headers.authorization.replace('bearer ', '');
-    return jwt.decode(temp);
-}
 
 
 module.exports = router;
